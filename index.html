@@ -13,6 +13,10 @@
     box-sizing: border-box;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     margin: 0;
     font-family: "Inter", sans-serif;
@@ -51,11 +55,23 @@
 
   .book-text {
     text-align: center;
-    font-size: clamp(26px, 5vw, 38px);
+    font-size: clamp(24px, 5vw, 38px);
     font-weight: 900;
     color: #ffffff;
     margin: 14px 0 16px;
     letter-spacing: -0.8px;
+    line-height: 1.15;
+  }
+
+  .book-label {
+    display: inline-block;
+  }
+
+  .phone-number {
+    display: inline-block;
+    white-space: nowrap;
+    color: #ffffff;
+    text-decoration: none;
   }
 
   .sub-hook {
@@ -195,15 +211,87 @@
 
   @media (max-width: 650px) {
     .container {
-      padding: 24px 14px 35px;
+      padding: 22px 13px 35px;
     }
 
-    .card {
-      padding: 19px;
+    .logo {
+      width: 100%;
+      margin-top: 8px;
+      border-radius: 14px;
+    }
+
+    .book-text {
+      font-size: clamp(25px, 8vw, 33px);
+      line-height: 1.12;
+      margin-top: 10px;
+      margin-bottom: 14px;
+    }
+
+    .book-label {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .phone-number {
+      display: block;
+      white-space: nowrap;
+      font-size: clamp(28px, 8.6vw, 36px);
+      letter-spacing: -1px;
+    }
+
+    .sub-hook {
+      font-size: 16px;
+      line-height: 1.4;
+      padding: 0 4px;
     }
 
     .tagline {
       font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .cta-row {
+      gap: 10px;
+    }
+
+    .cta {
+      width: 100%;
+      max-width: 330px;
+      text-align: center;
+      padding: 15px 18px;
+    }
+
+    .card {
+      padding: 18px;
+      border-radius: 16px;
+    }
+
+    h2 {
+      font-size: 21px;
+    }
+
+    .item {
+      font-size: 14.5px;
+      gap: 9px;
+    }
+
+    .price-box {
+      padding: 16px;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .phone-number {
+      font-size: 29px;
+      letter-spacing: -1.2px;
+    }
+
+    .book-text {
+      font-size: 25px;
+    }
+
+    .card {
+      padding: 16px;
     }
   }
 </style>
@@ -218,7 +306,10 @@
 
   <!-- HOME / HERO -->
   <div class="hero">
-    <div class="book-text">📩 Text to Book: 442-303-6022</div>
+    <div class="book-text">
+      <span class="book-label">📩 Text to Book:</span>
+      <a class="phone-number" href="sms:4423036022">442-303-6022</a>
+    </div>
 
     <div class="sub-hook">Mobile detailing starting at $40 — we come to you.</div>
 
