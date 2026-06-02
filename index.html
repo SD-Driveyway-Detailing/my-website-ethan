@@ -8,64 +8,125 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
+  * {
+    box-sizing: border-box;
+  }
+
   body {
     margin: 0;
     font-family: "Inter", sans-serif;
-    background: #0b0f17;
+    background:
+      radial-gradient(circle at top, rgba(56,189,248,0.16), transparent 35%),
+      #0b0f17;
     color: #e5e7eb;
   }
 
   .container {
-    max-width: 900px;
+    max-width: 950px;
     margin: auto;
-    padding: 40px 20px;
+    padding: 34px 18px 45px;
   }
 
-  /* LOGO +25% */
   .logo {
-    width: 575px; /* was 460px */
+    width: 575px;
     max-width: 100%;
     display: block;
-    margin: 20px auto 10px auto;
+    margin: 15px auto 8px auto;
     border-radius: 18px;
   }
 
-  /* BOOKING TEXT +25% */
+  .hero {
+    text-align: center;
+    margin-bottom: 26px;
+  }
+
+  .tagline {
+    font-size: 17px;
+    color: #cbd5e1;
+    max-width: 720px;
+    margin: 12px auto 20px;
+    line-height: 1.6;
+  }
+
   .book-text {
     text-align: center;
-    font-size: 35px; /* was 28px */
+    font-size: clamp(26px, 5vw, 38px);
     font-weight: 900;
     color: #ffffff;
-    margin-bottom: 40px;
+    margin: 14px 0 16px;
+    letter-spacing: -0.8px;
+  }
+
+  .sub-hook {
+    color: #38bdf8;
+    font-weight: 900;
+    font-size: 18px;
+    margin-bottom: 18px;
+  }
+
+  .cta-row {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 18px;
+  }
+
+  .cta {
+    display: inline-block;
+    padding: 15px 20px;
+    background: #38bdf8;
+    color: #07111f;
+    font-weight: 900;
+    border-radius: 14px;
+    text-decoration: none;
+    box-shadow: 0 10px 28px rgba(56,189,248,0.22);
+  }
+
+  .cta.secondary {
+    background: transparent;
+    color: #ffffff;
+    border: 1px solid #334155;
+    box-shadow: none;
   }
 
   .card {
-    background: #111827;
-    padding: 22px;
-    border-radius: 16px;
+    background: rgba(17, 24, 39, 0.92);
+    padding: 24px;
+    border-radius: 18px;
     border: 1px solid #1f2937;
     margin-bottom: 20px;
+    box-shadow: 0 14px 36px rgba(0,0,0,0.22);
   }
 
   h2 {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 900;
     color: #ffffff;
-    margin-bottom: 18px;
+    margin: 0 0 18px;
+    letter-spacing: -0.3px;
+  }
+
+  h3 {
+    font-size: 17px;
+    font-weight: 900;
+    color: #ffffff;
+    margin: 22px 0 10px;
   }
 
   .item {
     display: flex;
     gap: 10px;
     margin-bottom: 10px;
-    font-size: 14px;
+    font-size: 15px;
     color: #d1d5db;
-    line-height: 1.5;
+    line-height: 1.55;
   }
 
   .icon {
     color: #38bdf8;
     min-width: 18px;
+    font-weight: 900;
   }
 
   .strong {
@@ -76,17 +137,95 @@
   .gray-strong {
     font-weight: 900;
     color: #9ca3af;
+    margin-bottom: 4px;
   }
 
-  .cta {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 14px 18px;
-    background: #38bdf8;
-    color: #0b0f17;
+  .price-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-top: 14px;
+  }
+
+  .price-box {
+    background: #0b1220;
+    border: 1px solid #243244;
+    border-radius: 15px;
+    padding: 17px;
+  }
+
+  .vehicle {
     font-weight: 900;
+    color: #ffffff;
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+
+  .price {
+    font-size: 28px;
+    font-weight: 900;
+    color: #38bdf8;
+  }
+
+  .small-note {
+    font-size: 13px;
+    color: #94a3b8;
+    line-height: 1.5;
+    margin-top: 12px;
+  }
+
+  .extra-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 12px;
+  }
+
+  .extra {
+    background: #0b1220;
+    border: 1px solid #243244;
     border-radius: 12px;
-    text-decoration: none;
+    padding: 12px;
+    color: #d1d5db;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .discount {
+    background: #0b1220;
+    border: 1px solid #243244;
+    border-radius: 13px;
+    padding: 14px;
+    margin-bottom: 10px;
+    color: #d1d5db;
+    line-height: 1.5;
+  }
+
+  .footer {
+    text-align: center;
+    color: #94a3b8;
+    font-size: 13px;
+    margin-top: 25px;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 650px) {
+    .container {
+      padding: 24px 14px 35px;
+    }
+
+    .card {
+      padding: 19px;
+    }
+
+    .price-grid,
+    .extra-list {
+      grid-template-columns: 1fr;
+    }
+
+    .tagline {
+      font-size: 15px;
+    }
   }
 </style>
 </head>
@@ -96,79 +235,164 @@
 <div class="container">
 
   <!-- LOGO -->
-  <img src="logo.png" class="logo" />
+  <img src="logo.png" class="logo" alt="SD Mobile Detail Logo" />
 
-  <!-- BIG BOOKING LINE -->
-  <div class="book-text">
-    📩 Text to Book: 442 303 6022
+  <!-- HOME / HERO -->
+  <div class="hero">
+    <div class="book-text">📩 Text to Book: 442-303-6022</div>
+
+    <div class="sub-hook">Mobile detailing starting at $40 — we come to you.</div>
+
+    <div class="tagline">
+      Professional mobile detailing brought directly to your home. Clean, simple, and built on quality exterior and interior cleaning with fair pricing and convenient service.
+    </div>
+
+    <div class="cta-row">
+      <a class="cta" href="sms:4423036022">Text to Book</a>
+      <a class="cta secondary" href="#pricing">View Pricing</a>
+    </div>
   </div>
 
   <!-- SERVICE -->
   <div class="card">
 
-    <h2>🚗 OUR DETAIL SERVICE</h2>
+    <h2>🚗 Our Detail Service</h2>
 
     <div class="item">
       <span class="icon">✔</span>
-      <span class="strong">A complete detail focused on safely cleaning your vehicle inside and out while protecting paint and delivering a clean, finished look.</span>
+      <span class="strong">A complete mobile clean focused on safely washing your vehicle, freshening up the interior, and leaving a clean finished look.</span>
     </div>
 
     <div class="gray-strong">Safe on paint. Deep clean. Clean finish.</div>
 
-    <br>
+    <h3>Exterior Standard Wash</h3>
 
-    <div class="strong">Exterior</div>
+    <div class="item"><span class="icon">✔</span> Ultra paint-safe rinse using 1800 PSI and a wide 40° nozzle to remove loose dirt safely.</div>
 
-    <div class="item"><span class="icon">✔</span> Ultra paint safe pressure wash (1800 PSI) with a wide (40°) spray nozzle removes loose dirt and cools the paint before washing begins.</div>
+    <div class="item"><span class="icon">✔</span> Foam cannon soap application to loosen grime before contact washing.</div>
 
-    <div class="item"><span class="icon">✔</span> Foam cannon applies thick foam breaking down the grime to be easily and safely washed off while serving as a protective barrier on the paint to guarantee paint safety.</div>
+    <div class="item"><span class="icon">✔</span> Gentle hand wash using microfiber wash mitts for a clean, safe finish.</div>
 
-    <div class="item"><span class="icon">✔</span> Hand wash for tougher spots.</div>
+    <div class="item"><span class="icon">✔</span> Wheels, tires, windows, and mirrors cleaned thoroughly.</div>
 
-    <div class="item"><span class="icon">✔</span> Windows, Mirrors, Rims, Tires cleaned thoroughly</div>
-
-    <div class="item"><span class="icon">✔</span> Microfiber hand dry for a streak-free finish.</div>
+    <div class="item"><span class="icon">✔</span> Microfiber hand dry to help prevent streaks and water spots.</div>
 
     <div class="item"><span class="icon">✔</span> Tire shine applied for a clean final look.</div>
 
-    <br>
-
-    <div class="strong">Interior</div>
+    <h3>Interior Express Clean</h3>
 
     <div class="item"><span class="icon">✔</span> Trash pickup and removal.</div>
 
-    <div class="item"><span class="icon">✔</span> Vacuum floors and trunk</div>
-
-    <div class="item"><span class="icon">✔</span> Vacuum carpets and floor mats.</div>
+    <div class="item"><span class="icon">✔</span> Vacuum seats, floors, carpets, mats, and trunk.</div>
 
     <div class="item"><span class="icon">✔</span> Interior windows cleaned for a clear finish.</div>
+
+    <div class="item"><span class="icon">✔</span> Quick wipe-down of dashboard, center console, cupholders, and door panels.</div>
+
+    <div class="item"><span class="icon">✔</span> Floor mats shaken/vacuumed and placed back neatly.</div>
+
+  </div>
+
+  <!-- PRICING -->
+  <div class="card" id="pricing">
+
+    <h2>💰 Pricing</h2>
+
+    <div class="item">
+      <span class="icon">✔</span>
+      <span><span class="strong">Starting at $40.</span> Final price depends on vehicle size and condition.</span>
+    </div>
+
+    <div class="price-grid">
+      <div class="price-box">
+        <div class="vehicle">Sedan</div>
+        <div class="price">$40</div>
+        <div class="small-note">Normal dirt / maintenance clean</div>
+      </div>
+
+      <div class="price-box">
+        <div class="vehicle">Small SUV / Crossover</div>
+        <div class="price">$50</div>
+        <div class="small-note">Compact SUVs and crossovers</div>
+      </div>
+
+      <div class="price-box">
+        <div class="vehicle">Truck / Large SUV</div>
+        <div class="price">$60</div>
+        <div class="small-note">Trucks, 3-row SUVs, larger vehicles</div>
+      </div>
+
+      <div class="price-box">
+        <div class="vehicle">Heavy Condition</div>
+        <div class="price">Extra</div>
+        <div class="small-note">Heavy dirt, sand, mud, pet hair, or neglected interiors</div>
+      </div>
+    </div>
+
+    <h3>Possible Add-On Charges</h3>
+
+    <div class="extra-list">
+      <div class="extra">Extremely dirty: +$15–$40</div>
+      <div class="extra">Pet hair: +$20–$50</div>
+      <div class="extra">Heavy sand/mud: +$15–$35</div>
+      <div class="extra">Extra interior wipe-down: +$10–$20</div>
+      <div class="extra">Spray wax/sealant: +$15–$25</div>
+      <div class="extra">Stains/deep grime: quoted separately</div>
+    </div>
+
+    <div class="small-note">
+      Wax, clay bar, polishing, ceramic spray, engine bay cleaning, deep wheel barrel cleaning, tar removal, water spot removal, stain removal, shampooing, and paint correction are not included in the base package.
+    </div>
 
   </div>
 
   <!-- WHY -->
   <div class="card">
 
-    <h2>⭐ WHY CHOOSE US</h2>
+    <h2>⭐ Why Choose Us</h2>
 
     <div class="item"><span class="icon">✔</span> We come to you — saving time, gas, and the hassle of going to a shop.</div>
 
-    <div class="item"><span class="icon">✔</span> Relax at home while your vehicle is professionally detailed.</div>
+    <div class="item"><span class="icon">✔</span> Relax at home while your vehicle is cleaned in your driveway.</div>
 
-    <div class="item"><span class="icon">✔</span> Consistent quality and attention to detail every visit.</div>
+    <div class="item"><span class="icon">✔</span> Clean, consistent results with attention to detail every visit.</div>
 
-    <div class="item"><span class="icon">✔</span> Fair pricing based on real value, convenience, and full-service work.</div>
+    <div class="item"><span class="icon">✔</span> Fair pricing based on real value, convenience, vehicle size, and condition.</div>
 
   </div>
 
-  <!-- BONUSES -->
+  <!-- DISCOUNTS -->
   <div class="card">
 
-    <h2>🎁 BONUSES</h2>
+    <h2>🎁 Discounts</h2>
 
-    <div class="item"><span class="icon">✔</span> 2 vehicles — $5 off total</div>
-    <div class="item"><span class="icon">✔</span> 3 vehicles — $10 off total</div>
-    <div class="item"><span class="icon">✔</span> Refer a friend — $5 off for you, $5 off for them</div>
+    <div class="discount"><span class="strong">2 vehicles:</span> $5 off total</div>
+    <div class="discount"><span class="strong">3 vehicles:</span> $10 off total</div>
+    <div class="discount"><span class="strong">Refer a friend:</span> You get $5 off your next detail, and they get $5 off their first service.</div>
 
+    <div class="small-note">
+      Book with a friend, family member, or neighbor and save with multi-vehicle pricing.
+    </div>
+
+  </div>
+
+  <!-- FINAL CTA -->
+  <div class="card">
+    <h2>📲 Ready to Book?</h2>
+
+    <div class="item">
+      <span class="icon">✔</span>
+      <span>Text us your vehicle type, location, and a few photos if the car is extra dirty.</span>
+    </div>
+
+    <div class="cta-row">
+      <a class="cta" href="sms:4423036022">Text 442-303-6022</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    SD Mobile Detail<br>
+    Mobile exterior and interior cleaning brought directly to you.
   </div>
 
 </div>
