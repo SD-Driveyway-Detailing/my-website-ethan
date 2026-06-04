@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>SD Driveway Detailing | Mobile Car Detailing</title>
-<meta name="description" content="SD Driveway Detailing brings clean, professional mobile car detailing directly to your driveway. Starting at $40. Text 442-303-6022 to book." />
+<meta name="description" content="SD Driveway Detailing brings professional mobile exterior and interior car cleaning directly to your driveway. Starting at $40. Text 442-303-6022 to book." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,17 +15,16 @@
   html { scroll-behavior: smooth; }
 
   :root {
-    --bg: #070b12;
-    --panel: rgba(12, 18, 29, 0.88);
-    --panel-2: #0e1726;
-    --line: rgba(148, 163, 184, 0.18);
+    --bg: #060a11;
+    --panel: rgba(12, 18, 29, 0.9);
+    --panel-solid: #0d1626;
+    --line: rgba(148, 163, 184, 0.20);
     --text: #e5e7eb;
     --muted: #9ca3af;
     --soft: #cbd5e1;
     --white: #ffffff;
     --blue: #38bdf8;
-    --blue-2: #0ea5e9;
-    --green: #22c55e;
+    --blue-dark: #0ea5e9;
     --shadow: 0 24px 70px rgba(0,0,0,0.38);
   }
 
@@ -33,18 +32,14 @@
     margin: 0;
     font-family: "Inter", sans-serif;
     background:
-      radial-gradient(circle at 18% 0%, rgba(56,189,248,0.20), transparent 30%),
+      radial-gradient(circle at 18% 0%, rgba(56,189,248,0.22), transparent 30%),
       radial-gradient(circle at 85% 14%, rgba(14,165,233,0.16), transparent 28%),
       linear-gradient(180deg, #08101d 0%, #070b12 52%, #05070c 100%);
     color: var(--text);
   }
 
   a { color: inherit; }
-
-  .page {
-    width: min(1160px, calc(100% - 32px));
-    margin: 0 auto;
-  }
+  .page { width: min(1160px, calc(100% - 32px)); margin: 0 auto; }
 
   .nav {
     display: flex;
@@ -54,8 +49,8 @@
     padding: 18px 0;
     position: sticky;
     top: 0;
-    z-index: 10;
-    backdrop-filter: blur(14px);
+    z-index: 50;
+    backdrop-filter: blur(16px);
   }
 
   .brand {
@@ -68,11 +63,11 @@
   }
 
   .brand-mark {
-    width: 42px;
-    height: 42px;
+    width: 44px;
+    height: 44px;
     border-radius: 13px;
     object-fit: cover;
-    background: #fff;
+    background: #ffffff;
     border: 1px solid var(--line);
   }
 
@@ -112,7 +107,7 @@
     padding: 8px 12px;
     border-radius: 999px;
     border: 1px solid var(--line);
-    background: rgba(255,255,255,0.05);
+    background: rgba(255,255,255,0.055);
     color: var(--soft);
     font-size: 13px;
     font-weight: 800;
@@ -151,7 +146,7 @@
     min-height: 52px;
     padding: 15px 20px;
     border-radius: 15px;
-    background: linear-gradient(135deg, var(--blue), var(--blue-2));
+    background: linear-gradient(135deg, var(--blue), var(--blue-dark));
     color: #03111d;
     text-decoration: none;
     font-weight: 950;
@@ -173,11 +168,29 @@
     border: 1px solid var(--line);
     box-shadow: var(--shadow);
     background:
-      linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.70)),
-      url('https://source.unsplash.com/1200x1600/?car-detailing,car-wash,foam') center/cover;
+      linear-gradient(135deg, rgba(56,189,248,0.22), rgba(10,15,25,0.86)),
+      linear-gradient(180deg, #152238, #060a11);
+  }
+
+  .hero-photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.88;
+  }
+
+  .hero-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.74));
   }
 
   .hero-logo {
+    position: relative;
+    z-index: 2;
     width: min(430px, 82%);
     display: block;
     margin: 26px auto 0;
@@ -188,12 +201,13 @@
 
   .hero-floating {
     position: absolute;
+    z-index: 3;
     left: 18px;
     right: 18px;
     bottom: 18px;
     padding: 18px;
     border-radius: 22px;
-    background: rgba(7, 11, 18, 0.78);
+    background: rgba(7, 11, 18, 0.80);
     border: 1px solid rgba(255,255,255,0.16);
     backdrop-filter: blur(12px);
   }
@@ -250,17 +264,13 @@
   }
 
   .section-note {
-    max-width: 520px;
+    max-width: 540px;
     color: var(--muted);
     line-height: 1.65;
     margin: 0;
   }
 
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-  }
+  .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 
   .card {
     background: var(--panel);
@@ -271,27 +281,34 @@
   }
 
   .image-card {
-    min-height: 270px;
+    min-height: 290px;
     display: flex;
     align-items: end;
     overflow: hidden;
-    background-position: center;
-    background-size: cover;
     position: relative;
+    background:
+      linear-gradient(135deg, rgba(56,189,248,0.24), rgba(255,255,255,0.04)),
+      var(--panel-solid);
+  }
+
+  .image-card img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.88;
   }
 
   .image-card::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0.76));
+    z-index: 1;
+    background: linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.78));
   }
 
-  .image-card > div { position: relative; z-index: 1; }
-
-  .wash-img { background-image: url('https://source.unsplash.com/900x700/?foam-cannon,car-wash,detailing'); }
-  .interior-img { background-image: url('https://source.unsplash.com/900x700/?car-interior,cleaning,detailing'); }
-  .wheel-img { background-image: url('https://source.unsplash.com/900x700/?car-wheel,cleaning,detailing'); }
+  .image-card > div { position: relative; z-index: 2; }
 
   h3 {
     margin: 0 0 10px;
@@ -309,26 +326,16 @@
     font-size: 15px;
   }
 
-  .icon {
-    color: var(--blue);
-    min-width: 18px;
-    font-weight: 950;
-  }
-
+  .icon { color: var(--blue); min-width: 18px; font-weight: 950; }
   .strong { font-weight: 950; color: var(--white); }
-  .muted { color: var(--muted); }
+  .muted { color: var(--muted); line-height: 1.6; }
 
-  .pricing-wrap {
-    display: grid;
-    grid-template-columns: 0.85fr 1.15fr;
-    gap: 16px;
-    align-items: stretch;
-  }
+  .pricing-wrap { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 16px; align-items: stretch; }
 
   .price-feature {
     background:
       linear-gradient(180deg, rgba(56,189,248,0.18), rgba(255,255,255,0.04)),
-      var(--panel-2);
+      var(--panel-solid);
   }
 
   .starting {
@@ -341,12 +348,7 @@
   }
 
   .starting span { color: var(--blue); }
-
-  .price-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-  }
+  .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 
   .price-box {
     background: rgba(255,255,255,0.045);
@@ -359,11 +361,7 @@
   .price { color: var(--blue); font-size: 34px; font-weight: 950; margin: 8px 0 4px; }
   .small-note { color: var(--muted); font-size: 13px; line-height: 1.55; }
 
-  .process {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 14px;
-  }
+  .process { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
 
   .step-number {
     width: 42px;
@@ -378,11 +376,7 @@
     margin-bottom: 14px;
   }
 
-  .split {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
   .discount {
     background: rgba(255,255,255,0.045);
@@ -416,6 +410,9 @@
     line-height: 1.7;
     text-align: center;
   }
+
+  .credits { margin-top: 10px; font-size: 11px; opacity: 0.78; }
+  .credits a { color: var(--soft); }
 
   @media (max-width: 900px) {
     .hero { grid-template-columns: 1fr; padding-top: 12px; }
@@ -467,7 +464,7 @@
           <div class="eyebrow">✨ Driveway service • Exterior + interior • Starting at $40</div>
           <h1>Clean car. Clean finish. <span class="blue-text">Right in your driveway.</span></h1>
           <p class="hero-copy">
-            SD Driveway Detailing brings a sharp, convenient mobile clean directly to your home. We focus on safe washing, clean interiors, wheels, windows, tires, and a finished look that makes your car feel fresh again.
+            SD Driveway Detailing brings a sharp, convenient mobile clean directly to your home. We focus on safe washing, fresh interiors, clean wheels, clear windows, tire shine, and a finished look that makes your car feel new again.
           </p>
           <div class="cta-row">
             <a class="cta" href="sms:4423036022">Text 442-303-6022</a>
@@ -475,7 +472,8 @@
           </div>
         </div>
 
-        <div class="hero-card" aria-label="Professional car detailing image">
+        <div class="hero-card" aria-label="Car being washed in a driveway">
+          <img class="hero-photo" src="https://upload.wikimedia.org/wikipedia/commons/0/02/Car_washing_activity_at_a_residential_driveway.jpg" alt="Car being washed in a residential driveway" onerror="this.style.display='none'">
           <img src="logo.png" class="hero-logo" alt="SD Driveway Detailing logo">
           <div class="hero-floating">
             <div class="book-text">
@@ -498,19 +496,22 @@
         </div>
 
         <div class="card-grid">
-          <div class="card image-card wash-img">
+          <div class="card image-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Mobile_Wash_partner_washing_a_car.jpg" alt="Foam wash on a vehicle" onerror="this.style.display='none'">
             <div>
               <h3>Exterior Standard Wash</h3>
               <p class="muted">Foam, hand wash, wheels, windows, microfiber dry, and tire shine.</p>
             </div>
           </div>
-          <div class="card image-card interior-img">
+          <div class="card image-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Cleaning_interior.jpg" alt="Vehicle interior being cleaned" onerror="this.style.display='none'">
             <div>
               <h3>Interior Express Clean</h3>
               <p class="muted">Trash removal, vacuum, windows, mats, dash, console, cupholders, and panels.</p>
             </div>
           </div>
-          <div class="card image-card wheel-img">
+          <div class="card image-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b3/Clean_wheels_%284428900477%29.jpg" alt="Clean blue car with shiny wheels" onerror="this.style.display='none'">
             <div>
               <h3>Finished Details</h3>
               <p class="muted">Wheels, tires, mirrors, streak-free drying, and clean final presentation.</p>
@@ -582,26 +583,10 @@
           <p class="section-note">Keep it easy: text us, send the car type, and we handle the rest.</p>
         </div>
         <div class="process">
-          <div class="card">
-            <div class="step-number">1</div>
-            <h3>Text us</h3>
-            <p class="muted">Send your vehicle type, location, and preferred time.</p>
-          </div>
-          <div class="card">
-            <div class="step-number">2</div>
-            <h3>Send photos</h3>
-            <p class="muted">Photos help us quote extra dirty interiors, large SUVs, or special conditions.</p>
-          </div>
-          <div class="card">
-            <div class="step-number">3</div>
-            <h3>We come to you</h3>
-            <p class="muted">Your driveway becomes the detail spot. No shop trip needed.</p>
-          </div>
-          <div class="card">
-            <div class="step-number">4</div>
-            <h3>Enjoy the clean</h3>
-            <p class="muted">Exterior shine, fresh interior, clean wheels, clear windows.</p>
-          </div>
+          <div class="card"><div class="step-number">1</div><h3>Text us</h3><p class="muted">Send your vehicle type, location, and preferred time.</p></div>
+          <div class="card"><div class="step-number">2</div><h3>Send photos</h3><p class="muted">Photos help us quote extra dirty interiors, large SUVs, or special conditions.</p></div>
+          <div class="card"><div class="step-number">3</div><h3>We come to you</h3><p class="muted">Your driveway becomes the detail spot. No shop trip needed.</p></div>
+          <div class="card"><div class="step-number">4</div><h3>Enjoy the clean</h3><p class="muted">Exterior shine, fresh interior, clean wheels, clear windows.</p></div>
         </div>
       </section>
 
@@ -638,8 +623,13 @@
 
     <footer class="footer">
       <strong>SD Driveway Detailing</strong><br>
-      Mobile exterior and interior car cleaning brought directly to your driveway.<br>
-      <span>Images load from free stock photo sources. Replace them with your own before/after photos when you have them.</span>
+      Mobile exterior and interior car cleaning brought directly to your driveway.
+      <div class="credits">
+        Photo credits: <a href="https://commons.wikimedia.org/wiki/File:Car_washing_activity_at_a_residential_driveway.jpg">Nenad Stojković / Wikimedia Commons / CC BY 2.0</a> •
+        <a href="https://commons.wikimedia.org/wiki/File:Mobile_Wash_partner_washing_a_car.jpg">Juanacosta84 / Wikimedia Commons / CC BY-SA 4.0</a> •
+        <a href="https://commons.wikimedia.org/wiki/File:Cleaning_interior.jpg">Juanacosta84 / Wikimedia Commons / CC BY-SA 4.0</a> •
+        <a href="https://commons.wikimedia.org/wiki/File:Clean_wheels_(4428900477).jpg">Andy Fogg / Wikimedia Commons / CC BY 2.0</a>
+      </div>
     </footer>
   </div>
 </body>
