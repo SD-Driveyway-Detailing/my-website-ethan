@@ -2,635 +2,1182 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>SD Driveway Detailing | Mobile Car Detailing</title>
-<meta name="description" content="SD Driveway Detailing brings professional mobile exterior and interior car cleaning directly to your driveway. Starting at $40. Text 442-303-6022 to book." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SD Driveway Detailing | Mobile Detailing in San Diego</title>
+<meta name="description" content="SD Driveway Detailing brings clean, professional mobile car detailing directly to your driveway. View pricing, services, contact info, and book by text." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
 
   :root {
-    --bg: #060a11;
-    --panel: rgba(12, 18, 29, 0.9);
-    --panel-solid: #0d1626;
-    --line: rgba(148, 163, 184, 0.20);
-    --text: #e5e7eb;
-    --muted: #9ca3af;
+    --bg: #04070d;
+    --frame: #07101b;
+    --panel: #0e1725;
+    --panel-2: #121e30;
+    --panel-3: #09111e;
+    --line: rgba(255, 255, 255, 0.115);
+    --line-strong: rgba(255, 255, 255, 0.22);
+    --text: #f8fafc;
     --soft: #cbd5e1;
-    --white: #ffffff;
+    --muted: #93a4b8;
     --blue: #38bdf8;
-    --blue-dark: #0ea5e9;
-    --shadow: 0 24px 70px rgba(0,0,0,0.38);
+    --blue-2: #0ea5e9;
+    --gold: #d7b46a;
+    --gold-2: #f3d782;
+    --success: #7dd3fc;
+    --shadow: 0 30px 90px rgba(0, 0, 0, 0.52);
+    --radius-xl: 34px;
+    --radius-lg: 25px;
+    --radius-md: 17px;
   }
+
+  html { scroll-behavior: smooth; }
 
   body {
     margin: 0;
-    font-family: "Inter", sans-serif;
-    background:
-      radial-gradient(circle at 18% 0%, rgba(56,189,248,0.22), transparent 30%),
-      radial-gradient(circle at 85% 14%, rgba(14,165,233,0.16), transparent 28%),
-      linear-gradient(180deg, #08101d 0%, #070b12 52%, #05070c 100%);
+    font-family: "Inter", Arial, sans-serif;
     color: var(--text);
+    background:
+      radial-gradient(circle at 14% 0%, rgba(56, 189, 248, 0.22), transparent 34%),
+      radial-gradient(circle at 90% 12%, rgba(215, 180, 106, 0.12), transparent 28%),
+      linear-gradient(180deg, #08111f 0%, #04070d 54%, #020409 100%);
   }
 
   a { color: inherit; }
-  .page { width: min(1160px, calc(100% - 32px)); margin: 0 auto; }
 
-  .nav {
+  .page-shell {
+    width: min(1180px, calc(100% - 28px));
+    margin: 18px auto 40px;
+  }
+
+  .site-frame {
+    min-height: calc(100vh - 58px);
+    overflow: hidden;
+    border: 2px solid var(--line-strong);
+    border-radius: var(--radius-xl);
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.06), transparent 320px),
+      rgba(7, 13, 23, 0.96);
+    box-shadow: var(--shadow);
+  }
+
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 30;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 18px;
-    padding: 18px 0;
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    backdrop-filter: blur(16px);
+    min-height: 82px;
+    padding: 14px 22px;
+    border-bottom: 1px solid var(--line);
+    background: rgba(7, 13, 23, 0.90);
+    backdrop-filter: blur(18px);
   }
 
   .brand {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 13px;
+    min-width: 0;
+    color: #fff;
     text-decoration: none;
-    font-weight: 900;
-    letter-spacing: -0.4px;
   }
 
   .brand-mark {
-    width: 44px;
-    height: 44px;
-    border-radius: 13px;
-    object-fit: cover;
-    background: #ffffff;
-    border: 1px solid var(--line);
+    width: 56px;
+    height: 56px;
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    border: 1px solid var(--line-strong);
+    border-radius: 18px;
+    background:
+      linear-gradient(135deg, rgba(56,189,248,0.20), rgba(215,180,106,0.12)),
+      #0f1724;
+    overflow: hidden;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.13);
+    color: #fff;
+    font-weight: 950;
   }
 
-  .nav-links {
+  .brand-mark img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .brand-name {
+    display: block;
+    font-size: clamp(16px, 2vw, 21px);
+    font-weight: 950;
+    line-height: 1.05;
+    letter-spacing: -0.5px;
+    white-space: nowrap;
+  }
+
+  .brand-subtitle {
+    display: block;
+    margin-top: 4px;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 850;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .nav-actions {
     display: flex;
     align-items: center;
-    gap: 18px;
-    color: var(--soft);
-    font-size: 14px;
-    font-weight: 800;
+    gap: 9px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
   }
 
-  .nav-links a { text-decoration: none; }
-  .nav-links a:hover { color: var(--white); }
-
-  .nav-button {
-    padding: 11px 15px;
+  .nav-link,
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
     border-radius: 999px;
-    background: var(--white);
-    color: #07111f;
     text-decoration: none;
-    font-weight: 900;
+    font-weight: 950;
+    line-height: 1;
+    border: 1px solid transparent;
+    transition: transform 160ms ease, background 160ms ease, border-color 160ms ease, color 160ms ease;
   }
 
-  .hero {
+  .nav-link {
+    padding: 11px 13px;
+    color: var(--soft);
+    font-size: 13px;
+    background: transparent;
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    color: #ffffff;
+    background: rgba(255,255,255,0.075);
+    border-color: rgba(255,255,255,0.10);
+  }
+
+  .btn {
+    gap: 9px;
+    padding: 13px 18px;
+    background: linear-gradient(135deg, var(--blue), var(--blue-2));
+    color: #02111d;
+    font-size: 14px;
+    box-shadow: 0 14px 34px rgba(56, 189, 248, 0.23);
+  }
+
+  .btn:hover,
+  .nav-link:hover { transform: translateY(-1px); }
+
+  .btn.secondary {
+    background: rgba(255,255,255,0.06);
+    color: #ffffff;
+    border-color: var(--line-strong);
+    box-shadow: none;
+  }
+
+  .btn.gold {
+    background: linear-gradient(135deg, var(--gold-2), var(--gold));
+    color: #171106;
+    box-shadow: 0 14px 34px rgba(215, 180, 106, 0.18);
+  }
+
+  main { min-height: 720px; }
+
+  .site-page {
+    display: none;
+    animation: pageIn 260ms ease both;
+  }
+
+  .site-page.active { display: block; }
+
+  @keyframes pageIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .page-hero {
+    position: relative;
+    isolation: isolate;
     display: grid;
-    grid-template-columns: 1.05fr 0.95fr;
+    align-items: stretch;
+    min-height: 610px;
+    border-bottom: 1px solid var(--line);
+    background:
+      linear-gradient(90deg, rgba(4, 7, 13, 0.96) 0%, rgba(4, 7, 13, 0.82) 43%, rgba(4, 7, 13, 0.24) 100%),
+      linear-gradient(180deg, rgba(4,7,13,0.14), rgba(4,7,13,0.78)),
+      var(--fallback),
+      var(--hero-img);
+    background-size: cover;
+    background-position: center;
+  }
+
+  .page-hero::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 140px;
+    background: linear-gradient(180deg, transparent, rgba(7, 13, 23, 1));
+    z-index: -1;
+  }
+
+  .home-hero {
+    --fallback: linear-gradient(135deg, #0a2036, #05070d 58%, #0c1523);
+    --hero-img: url("https://images.pexels.com/photos/6872174/pexels-photo-6872174.jpeg?auto=compress&cs=tinysrgb&w=1800");
+  }
+
+  .services-hero {
+    --fallback: linear-gradient(135deg, #09172a, #05070d 58%, #132033);
+    --hero-img: url("https://images.pexels.com/photos/29922283/pexels-photo-29922283.jpeg?auto=compress&cs=tinysrgb&w=1800");
+  }
+
+  .contact-hero {
+    --fallback: linear-gradient(135deg, #0a2036, #05070d 58%, #211c10);
+    --hero-img: url("https://images.pexels.com/photos/32667420/pexels-photo-32667420.jpeg?auto=compress&cs=tinysrgb&w=1800");
+  }
+
+  .book-hero {
+    --fallback: linear-gradient(135deg, #09172a, #05070d 58%, #171f2b);
+    --hero-img: url("https://images.pexels.com/photos/6873100/pexels-photo-6873100.jpeg?auto=compress&cs=tinysrgb&w=1800");
+  }
+
+  .hero-inner,
+  .page-section {
+    width: min(1060px, calc(100% - 42px));
+    margin: 0 auto;
+  }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.95fr);
     gap: 28px;
     align-items: center;
-    padding: 28px 0 34px;
+    padding: 58px 0 54px;
   }
 
   .eyebrow {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 8px 12px;
+    width: fit-content;
+    padding: 9px 12px;
+    border: 1px solid rgba(56, 189, 248, 0.32);
     border-radius: 999px;
-    border: 1px solid var(--line);
-    background: rgba(255,255,255,0.055);
-    color: var(--soft);
-    font-size: 13px;
-    font-weight: 800;
-    margin-bottom: 16px;
+    background: rgba(56, 189, 248, 0.09);
+    color: #a5e9ff;
+    font-size: 12px;
+    font-weight: 950;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
   }
 
   h1 {
-    margin: 0;
-    font-size: clamp(42px, 7vw, 78px);
-    line-height: 0.92;
-    letter-spacing: -4px;
-    color: var(--white);
-  }
-
-  .blue-text { color: var(--blue); }
-
-  .hero-copy {
-    color: var(--soft);
-    font-size: clamp(16px, 2vw, 19px);
-    line-height: 1.7;
-    max-width: 650px;
-    margin: 20px 0 0;
-  }
-
-  .cta-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 24px;
-  }
-
-  .cta {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 52px;
-    padding: 15px 20px;
-    border-radius: 15px;
-    background: linear-gradient(135deg, var(--blue), var(--blue-dark));
-    color: #03111d;
-    text-decoration: none;
+    margin: 20px 0 16px;
+    font-size: clamp(43px, 7vw, 80px);
+    line-height: 0.93;
+    letter-spacing: -3.1px;
     font-weight: 950;
-    box-shadow: 0 18px 40px rgba(56,189,248,0.24);
-  }
-
-  .cta.secondary {
-    background: rgba(255,255,255,0.06);
-    color: var(--white);
-    border: 1px solid var(--line);
-    box-shadow: none;
-  }
-
-  .hero-card {
-    position: relative;
-    border-radius: 30px;
-    overflow: hidden;
-    min-height: 570px;
-    border: 1px solid var(--line);
-    box-shadow: var(--shadow);
-    background:
-      linear-gradient(135deg, rgba(56,189,248,0.22), rgba(10,15,25,0.86)),
-      linear-gradient(180deg, #152238, #060a11);
-  }
-
-  .hero-photo {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.88;
-  }
-
-  .hero-card::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.74));
-  }
-
-  .hero-logo {
-    position: relative;
-    z-index: 2;
-    width: min(430px, 82%);
-    display: block;
-    margin: 26px auto 0;
-    border-radius: 20px;
-    background: #fff;
-    box-shadow: 0 18px 50px rgba(0,0,0,0.35);
-  }
-
-  .hero-floating {
-    position: absolute;
-    z-index: 3;
-    left: 18px;
-    right: 18px;
-    bottom: 18px;
-    padding: 18px;
-    border-radius: 22px;
-    background: rgba(7, 11, 18, 0.80);
-    border: 1px solid rgba(255,255,255,0.16);
-    backdrop-filter: blur(12px);
-  }
-
-  .book-text {
-    font-size: clamp(24px, 4vw, 36px);
-    font-weight: 950;
-    line-height: 1.1;
-    color: var(--white);
-    letter-spacing: -1px;
-  }
-
-  .phone-number {
-    display: inline-block;
-    color: var(--blue);
-    text-decoration: none;
-    white-space: nowrap;
-  }
-
-  .hero-badges {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin-top: 16px;
-  }
-
-  .badge {
-    padding: 12px 10px;
-    border-radius: 16px;
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.10);
-    text-align: center;
-  }
-
-  .badge strong { display: block; color: var(--white); font-size: 17px; }
-  .badge span { display: block; color: var(--muted); font-size: 12px; margin-top: 3px; }
-
-  .section { padding: 34px 0; }
-
-  .section-head {
-    display: flex;
-    align-items: end;
-    justify-content: space-between;
-    gap: 20px;
-    margin-bottom: 18px;
   }
 
   h2 {
     margin: 0;
-    font-size: clamp(28px, 4vw, 44px);
+    font-size: clamp(31px, 4vw, 48px);
     line-height: 1;
-    color: var(--white);
-    letter-spacing: -2px;
+    letter-spacing: -1.7px;
+    font-weight: 950;
   }
-
-  .section-note {
-    max-width: 540px;
-    color: var(--muted);
-    line-height: 1.65;
-    margin: 0;
-  }
-
-  .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-
-  .card {
-    background: var(--panel);
-    border: 1px solid var(--line);
-    border-radius: 24px;
-    padding: 22px;
-    box-shadow: 0 16px 45px rgba(0,0,0,0.22);
-  }
-
-  .image-card {
-    min-height: 290px;
-    display: flex;
-    align-items: end;
-    overflow: hidden;
-    position: relative;
-    background:
-      linear-gradient(135deg, rgba(56,189,248,0.24), rgba(255,255,255,0.04)),
-      var(--panel-solid);
-  }
-
-  .image-card img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.88;
-  }
-
-  .image-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    background: linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.78));
-  }
-
-  .image-card > div { position: relative; z-index: 2; }
 
   h3 {
-    margin: 0 0 10px;
-    color: var(--white);
-    font-size: 20px;
-    letter-spacing: -0.4px;
-  }
-
-  .item {
-    display: flex;
-    gap: 10px;
-    margin: 11px 0;
-    color: #d1d5db;
-    line-height: 1.55;
-    font-size: 15px;
-  }
-
-  .icon { color: var(--blue); min-width: 18px; font-weight: 950; }
-  .strong { font-weight: 950; color: var(--white); }
-  .muted { color: var(--muted); line-height: 1.6; }
-
-  .pricing-wrap { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 16px; align-items: stretch; }
-
-  .price-feature {
-    background:
-      linear-gradient(180deg, rgba(56,189,248,0.18), rgba(255,255,255,0.04)),
-      var(--panel-solid);
-  }
-
-  .starting {
-    font-size: 54px;
-    line-height: 0.95;
+    margin: 0 0 11px;
+    font-size: 21px;
+    line-height: 1.15;
+    letter-spacing: -0.55px;
     font-weight: 950;
-    letter-spacing: -3px;
-    color: var(--white);
-    margin: 12px 0;
   }
 
-  .starting span { color: var(--blue); }
-  .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .hero-copy {
+    max-width: 640px;
+    color: var(--soft);
+    font-size: clamp(16px, 2vw, 20px);
+    line-height: 1.65;
+  }
 
-  .price-box {
-    background: rgba(255,255,255,0.045);
+  .hero-copy strong { color: #ffffff; }
+
+  .hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 26px;
+  }
+
+  .hero-proof {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 30px;
+    max-width: 660px;
+  }
+
+  .proof-box,
+  .glass-card,
+  .detail-card,
+  .price-card,
+  .step-card,
+  .contact-card,
+  .book-panel,
+  .form-card,
+  .mini-card {
     border: 1px solid var(--line);
-    border-radius: 18px;
-    padding: 18px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.075), rgba(255,255,255,0.035));
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.045);
   }
 
-  .vehicle { color: var(--white); font-weight: 950; }
-  .price { color: var(--blue); font-size: 34px; font-weight: 950; margin: 8px 0 4px; }
-  .small-note { color: var(--muted); font-size: 13px; line-height: 1.55; }
+  .proof-box {
+    min-height: 98px;
+    padding: 15px;
+    border-radius: var(--radius-md);
+    backdrop-filter: blur(12px);
+  }
 
-  .process { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .proof-number {
+    display: block;
+    font-size: 23px;
+    font-weight: 950;
+    color: #ffffff;
+    letter-spacing: -0.7px;
+  }
 
-  .step-number {
+  .proof-label {
+    display: block;
+    margin-top: 5px;
+    color: var(--muted);
+    font-size: 12.5px;
+    font-weight: 780;
+    line-height: 1.45;
+  }
+
+  .hero-card {
+    justify-self: end;
+    width: min(400px, 100%);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 30px;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.13), rgba(255,255,255,0.055)),
+      rgba(10, 16, 27, 0.76);
+    box-shadow: 0 25px 70px rgba(0,0,0,0.35);
+    backdrop-filter: blur(18px);
+    overflow: hidden;
+  }
+
+  .hero-card-photo {
+    min-height: 225px;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(56,189,248,0.10), rgba(215,180,106,0.10)), #0b1220;
+  }
+
+  .hero-card-photo img,
+  .photo-tile img,
+  .wide-photo img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  .hero-card-body { padding: 22px; }
+
+  .hero-card-body p {
+    margin: 0;
+    color: var(--soft);
+    line-height: 1.55;
+    font-size: 14.5px;
+  }
+
+  .quick-prices {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--line);
+    background: rgba(255,255,255,0.04);
+  }
+
+  .quick-price {
+    padding: 14px;
+    border-right: 1px solid var(--line);
+  }
+
+  .quick-price:last-child { border-right: 0; }
+
+  .quick-price strong {
+    display: block;
+    font-size: 19px;
+    color: var(--blue);
+  }
+
+  .quick-price span {
+    display: block;
+    margin-top: 4px;
+    color: var(--muted);
+    font-size: 10.5px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .page-section {
+    padding: 62px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .section-head {
+    display: grid;
+    grid-template-columns: minmax(0, 0.78fr) minmax(0, 1fr);
+    gap: 28px;
+    align-items: end;
+    margin-bottom: 26px;
+  }
+
+  .section-kicker {
+    display: inline-block;
+    margin-bottom: 10px;
+    color: var(--blue);
+    font-size: 12px;
+    font-weight: 950;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .section-intro {
+    margin: 0;
+    color: var(--soft);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .summary-grid,
+  .pricing-grid,
+  .contact-grid,
+  .book-grid {
+    display: grid;
+    gap: 14px;
+  }
+
+  .summary-grid { grid-template-columns: repeat(3, 1fr); }
+  .pricing-grid { grid-template-columns: repeat(3, 1fr); }
+  .contact-grid { grid-template-columns: 1fr 1fr; align-items: stretch; }
+  .book-grid { grid-template-columns: 0.9fr 1.1fr; align-items: start; }
+
+  .detail-card,
+  .price-card,
+  .step-card,
+  .contact-card,
+  .mini-card {
+    border-radius: var(--radius-lg);
+    padding: 22px;
+  }
+
+  .detail-card p,
+  .step-card p,
+  .contact-card p,
+  .mini-card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14.5px;
+    line-height: 1.65;
+  }
+
+  .detail-icon {
+    display: grid;
+    place-items: center;
     width: 42px;
     height: 42px;
+    margin-bottom: 18px;
     border-radius: 14px;
-    background: rgba(56,189,248,0.14);
+    background: rgba(56,189,248,0.13);
     color: var(--blue);
-    display: flex;
-    align-items: center;
-    justify-content: center;
     font-weight: 950;
-    margin-bottom: 14px;
   }
 
-  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-
-  .discount {
-    background: rgba(255,255,255,0.045);
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    padding: 14px;
-    margin-top: 10px;
-    color: #d1d5db;
-    line-height: 1.5;
+  .clean-list {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
 
-  .final-cta {
-    text-align: center;
-    padding: 40px 22px;
-    background:
-      linear-gradient(135deg, rgba(56,189,248,0.18), rgba(255,255,255,0.04)),
-      var(--panel);
-  }
-
-  .final-cta p {
+  .clean-list li {
+    position: relative;
+    padding-left: 27px;
     color: var(--soft);
-    line-height: 1.7;
-    max-width: 700px;
-    margin: 14px auto 0;
+    font-size: 14.5px;
+    line-height: 1.55;
+  }
+
+  .clean-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--blue);
+    font-weight: 950;
+  }
+
+  .service-layout {
+    display: grid;
+    grid-template-columns: 0.94fr 1.06fr;
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  .photo-stack {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .photo-tile,
+  .wide-photo {
+    min-height: 260px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background:
+      linear-gradient(135deg, rgba(56,189,248,0.10), rgba(215,180,106,0.12)),
+      #0b1220;
+  }
+
+  .service-panels {
+    display: grid;
+    gap: 14px;
+  }
+
+  .price-card {
+    position: relative;
+    overflow: hidden;
+    min-height: 206px;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.085), rgba(255,255,255,0.035)),
+      #0d1522;
+  }
+
+  .price-card.featured {
+    border-color: rgba(56,189,248,0.42);
+    box-shadow: 0 18px 44px rgba(56,189,248,0.08), inset 0 1px 0 rgba(255,255,255,0.06);
+  }
+
+  .price-card::after {
+    content: "";
+    position: absolute;
+    width: 168px;
+    height: 168px;
+    right: -78px;
+    top: -78px;
+    border-radius: 999px;
+    background: rgba(56,189,248,0.12);
+  }
+
+  .price-card > * { position: relative; z-index: 1; }
+
+  .price-amount {
+    margin: 14px 0 10px;
+    font-size: 46px;
+    line-height: 1;
+    font-weight: 950;
+    letter-spacing: -2px;
+    color: #ffffff;
+  }
+
+  .price-amount span {
+    font-size: 15px;
+    color: var(--muted);
+    letter-spacing: 0;
+    font-weight: 850;
+  }
+
+  .price-note {
+    margin: 0;
+    color: var(--muted);
+    font-size: 13.5px;
+    line-height: 1.55;
+  }
+
+  .notice {
+    margin-top: 16px;
+    padding: 18px;
+    border: 1px solid rgba(215, 180, 106, 0.28);
+    border-radius: var(--radius-lg);
+    background: rgba(215, 180, 106, 0.075);
+    color: #ead9ad;
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+
+  .step-number {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    margin-bottom: 18px;
+    border-radius: 13px;
+    background: rgba(56,189,248,0.13);
+    color: var(--blue);
+    font-weight: 950;
+  }
+
+  .contact-card strong,
+  .mini-card strong {
+    display: block;
+    color: #ffffff;
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  .contact-actions {
+    display: grid;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .contact-line {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--line);
+    color: var(--soft);
+    font-size: 14.5px;
+  }
+
+  .contact-line:last-child { border-bottom: 0; }
+  .contact-line b { color: #ffffff; }
+
+  .form-card,
+  .book-panel {
+    border-radius: 30px;
+    padding: 25px;
+  }
+
+  .book-panel {
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.035)),
+      #0b1220;
+  }
+
+  .booking-form {
+    display: grid;
+    gap: 13px;
+    margin-top: 18px;
+  }
+
+  label {
+    display: grid;
+    gap: 7px;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 850;
+  }
+
+  input,
+  select,
+  textarea {
+    width: 100%;
+    border: 1px solid var(--line-strong);
+    border-radius: 15px;
+    background: rgba(255,255,255,0.07);
+    color: #ffffff;
+    font: inherit;
+    font-size: 15px;
+    padding: 14px 14px;
+    outline: none;
+  }
+
+  textarea { min-height: 106px; resize: vertical; }
+
+  input::placeholder,
+  textarea::placeholder { color: rgba(203,213,225,0.62); }
+
+  select option { color: #0b1220; }
+
+  .form-note {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.55;
+    margin: 11px 0 0;
   }
 
   .footer {
-    padding: 28px 0 44px;
+    border-top: 1px solid var(--line);
+    padding: 28px 22px;
     color: var(--muted);
     font-size: 13px;
     line-height: 1.7;
     text-align: center;
+    background: rgba(255,255,255,0.025);
   }
 
-  .credits { margin-top: 10px; font-size: 11px; opacity: 0.78; }
-  .credits a { color: var(--soft); }
+  .footer strong { color: #ffffff; }
 
-  @media (max-width: 900px) {
-    .hero { grid-template-columns: 1fr; padding-top: 12px; }
-    .hero-card { min-height: 500px; }
-    .section-head { display: block; }
-    .section-note { margin-top: 12px; }
-    .card-grid, .pricing-wrap, .split { grid-template-columns: 1fr; }
-    .process, .price-grid { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 980px) {
+    .topbar {
+      position: relative;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 13px;
+    }
+
+    .nav-actions { justify-content: center; }
+
+    .hero-inner,
+    .section-head,
+    .service-layout,
+    .contact-grid,
+    .book-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-card { justify-self: stretch; width: 100%; }
+    .process-grid { grid-template-columns: repeat(2, 1fr); }
   }
 
-  @media (max-width: 640px) {
-    .page { width: min(100% - 24px, 1160px); }
-    .nav { position: relative; flex-direction: column; align-items: stretch; }
-    .brand { justify-content: center; }
-    .nav-links { justify-content: center; flex-wrap: wrap; gap: 12px; }
-    .nav-links a:not(.nav-button) { display: none; }
-    h1 { letter-spacing: -2.5px; }
-    .hero-card { min-height: 455px; border-radius: 24px; }
-    .hero-logo { width: 88%; margin-top: 18px; }
-    .hero-badges { grid-template-columns: 1fr; }
-    .book-text { text-align: center; }
-    .phone-number { display: block; font-size: clamp(28px, 8.5vw, 38px); margin-top: 4px; }
-    .cta { width: 100%; }
-    .process, .price-grid { grid-template-columns: 1fr; }
-    .card { padding: 19px; border-radius: 20px; }
-    .starting { font-size: 46px; }
+  @media (max-width: 760px) {
+    .page-shell {
+      width: min(100% - 16px, 1180px);
+      margin-top: 8px;
+    }
+
+    .site-frame { border-radius: 24px; }
+    .topbar { padding: 14px; }
+    .brand-name { white-space: normal; }
+
+    .nav-actions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .nav-link,
+    .btn { width: 100%; }
+
+    .hero-inner,
+    .page-section { width: min(100% - 26px, 1060px); }
+
+    .page-hero { min-height: auto; }
+
+    .hero-inner { padding: 48px 0 42px; }
+
+    h1 {
+      font-size: clamp(42px, 13vw, 58px);
+      letter-spacing: -2.1px;
+    }
+
+    h2 { font-size: clamp(29px, 9vw, 38px); }
+    .hero-copy { font-size: 16px; }
+
+    .hero-proof,
+    .summary-grid,
+    .pricing-grid,
+    .quick-prices,
+    .process-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .quick-price {
+      border-right: 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .quick-price:last-child { border-bottom: 0; }
+    .page-section { padding: 48px 0; }
+    .photo-stack { grid-template-rows: auto; }
+    .photo-tile, .wide-photo { min-height: 220px; }
+    .form-card, .book-panel { padding: 20px; border-radius: 24px; }
+  }
+
+  @media (max-width: 440px) {
+    .brand { align-items: flex-start; }
+    .brand-mark { width: 48px; height: 48px; border-radius: 15px; }
+    .brand-name { font-size: 16.5px; }
+    .brand-subtitle { font-size: 10px; }
+    .nav-actions { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 
 <body>
-  <div class="page">
-    <nav class="nav" aria-label="Main navigation">
-      <a class="brand" href="#top">
-        <img src="logo.png" class="brand-mark" alt="SD Driveway Detailing logo">
-        <span>SD Driveway Detailing</span>
-      </a>
-      <div class="nav-links">
-        <a href="#services">Services</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#why">Why Us</a>
-        <a class="nav-button" href="sms:4423036022">Text to Book</a>
-      </div>
-    </nav>
+  <div class="page-shell">
+    <div class="site-frame">
+      <header class="topbar">
+        <a class="brand" href="#home" data-page-link="home" aria-label="SD Driveway Detailing home">
+          <span class="brand-mark">
+            <img src="logo.png" alt="SD Driveway Detailing logo" onerror="this.style.display='none'; this.parentElement.textContent='SD';" />
+          </span>
+          <span class="brand-text">
+            <span class="brand-name">SD Driveway Detailing</span>
+            <span class="brand-subtitle">Mobile detail service</span>
+          </span>
+        </a>
 
-    <main id="top">
-      <section class="hero">
-        <div>
-          <div class="eyebrow">✨ Driveway service • Exterior + interior • Starting at $40</div>
-          <h1>Clean car. Clean finish. <span class="blue-text">Right in your driveway.</span></h1>
-          <p class="hero-copy">
-            SD Driveway Detailing brings a sharp, convenient mobile clean directly to your home. We focus on safe washing, fresh interiors, clean wheels, clear windows, tire shine, and a finished look that makes your car feel new again.
-          </p>
-          <div class="cta-row">
-            <a class="cta" href="sms:4423036022">Text 442-303-6022</a>
-            <a class="cta secondary" href="#pricing">See Packages</a>
-          </div>
-        </div>
+        <nav class="nav-actions" aria-label="Main navigation">
+          <a class="nav-link" href="#home" data-page-link="home">Home</a>
+          <a class="nav-link" href="#services" data-page-link="services">Pricing / Services</a>
+          <a class="nav-link" href="#contact" data-page-link="contact">Contact Us</a>
+          <a class="btn gold" href="#book" data-page-link="book">Book Appointment</a>
+        </nav>
+      </header>
 
-        <div class="hero-card" aria-label="Car being washed in a driveway">
-          <img class="hero-photo" src="https://upload.wikimedia.org/wikipedia/commons/0/02/Car_washing_activity_at_a_residential_driveway.jpg" alt="Car being washed in a residential driveway" onerror="this.style.display='none'">
-          <img src="logo.png" class="hero-logo" alt="SD Driveway Detailing logo">
-          <div class="hero-floating">
-            <div class="book-text">
-              <span>📩 Text to Book:</span>
-              <a class="phone-number" href="sms:4423036022">442-303-6022</a>
-            </div>
-            <div class="hero-badges">
-              <div class="badge"><strong>$40+</strong><span>sedans</span></div>
-              <div class="badge"><strong>Mobile</strong><span>we come to you</span></div>
-              <div class="badge"><strong>Fresh</strong><span>inside + out</span></div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <main>
+        <!-- HOME PAGE -->
+        <section class="site-page active" id="home" data-page="home" aria-label="Home page">
+          <div class="page-hero home-hero">
+            <div class="hero-inner">
+              <div>
+                <span class="eyebrow">Premium mobile detailing • We come to you</span>
+                <h1>Driveway detailing with a clean, professional finish.</h1>
+                <p class="hero-copy">
+                  <strong>SD Driveway Detailing</strong> brings exterior washing and interior refreshes directly to your home. Simple booking, fair pricing, and a clean look without driving to a shop.
+                </p>
 
-      <section class="section" id="services">
-        <div class="section-head">
-          <h2>Premium look. Simple pricing.</h2>
-          <p class="section-note">A clean, professional service built for regular maintenance details, dirty daily drivers, and customers who want convenience without overpaying.</p>
-        </div>
+                <div class="hero-buttons">
+                  <a class="btn gold" href="#book" data-page-link="book">Book Appointment</a>
+                  <a class="btn secondary" href="#services" data-page-link="services">View Pricing</a>
+                </div>
 
-        <div class="card-grid">
-          <div class="card image-card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Mobile_Wash_partner_washing_a_car.jpg" alt="Foam wash on a vehicle" onerror="this.style.display='none'">
-            <div>
-              <h3>Exterior Standard Wash</h3>
-              <p class="muted">Foam, hand wash, wheels, windows, microfiber dry, and tire shine.</p>
-            </div>
-          </div>
-          <div class="card image-card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Cleaning_interior.jpg" alt="Vehicle interior being cleaned" onerror="this.style.display='none'">
-            <div>
-              <h3>Interior Express Clean</h3>
-              <p class="muted">Trash removal, vacuum, windows, mats, dash, console, cupholders, and panels.</p>
-            </div>
-          </div>
-          <div class="card image-card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b3/Clean_wheels_%284428900477%29.jpg" alt="Clean blue car with shiny wheels" onerror="this.style.display='none'">
-            <div>
-              <h3>Finished Details</h3>
-              <p class="muted">Wheels, tires, mirrors, streak-free drying, and clean final presentation.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="split">
-          <div class="card">
-            <h2>🚗 Exterior</h2>
-            <div class="item"><span class="icon">✔</span><span>Paint-safe rinse using 1800 PSI and a wide 40° nozzle to remove loose dirt safely.</span></div>
-            <div class="item"><span class="icon">✔</span><span>Foam cannon soap application to loosen grime before contact washing.</span></div>
-            <div class="item"><span class="icon">✔</span><span>Gentle microfiber hand wash for tougher spots and a clean finish.</span></div>
-            <div class="item"><span class="icon">✔</span><span>Wheels, tires, windows, and mirrors cleaned thoroughly.</span></div>
-            <div class="item"><span class="icon">✔</span><span>Microfiber hand dry to reduce streaks and water spots.</span></div>
-            <div class="item"><span class="icon">✔</span><span>Tire shine applied for a clean final look.</span></div>
-          </div>
-
-          <div class="card">
-            <h2>🧼 Interior</h2>
-            <div class="item"><span class="icon">✔</span><span>Trash pickup and removal.</span></div>
-            <div class="item"><span class="icon">✔</span><span>Vacuum seats, floors, carpets, mats, and trunk.</span></div>
-            <div class="item"><span class="icon">✔</span><span>Interior windows cleaned for a clear finish.</span></div>
-            <div class="item"><span class="icon">✔</span><span>Quick wipe-down of dashboard, center console, cupholders, and door panels.</span></div>
-            <div class="item"><span class="icon">✔</span><span>Floor mats cleaned up and placed back neatly.</span></div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="pricing">
-        <div class="pricing-wrap">
-          <div class="card price-feature">
-            <h2>💰 Pricing</h2>
-            <div class="starting"><span>$40</span> starting price</div>
-            <p class="section-note">Final price may change slightly based on vehicle size, condition, pet hair, heavy dirt, stains, or extra work needed.</p>
-            <div class="cta-row">
-              <a class="cta" href="sms:4423036022">Get a Fast Quote</a>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="price-grid">
-              <div class="price-box">
-                <div class="vehicle">Sedan</div>
-                <div class="price">$40</div>
-                <div class="small-note">Normal dirt / maintenance clean</div>
+                <div class="hero-proof" aria-label="Business highlights">
+                  <div class="proof-box"><span class="proof-number">$40+</span><span class="proof-label">Starting maintenance clean for sedans</span></div>
+                  <div class="proof-box"><span class="proof-number">Inside + Out</span><span class="proof-label">Exterior wash plus interior express cleaning</span></div>
+                  <div class="proof-box"><span class="proof-number">At Home</span><span class="proof-label">We clean the car right in your driveway</span></div>
+                </div>
               </div>
-              <div class="price-box">
-                <div class="vehicle">Small Truck / SUV</div>
-                <div class="price">$50</div>
-                <div class="small-note">Small trucks, compact SUVs, and crossovers</div>
+
+              <aside class="hero-card" aria-label="Fast booking card">
+                <div class="hero-card-photo">
+                  <img src="https://images.pexels.com/photos/5693659/pexels-photo-5693659.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Clean vehicle detail close up" onerror="this.style.display='none';" />
+                </div>
+                <div class="hero-card-body">
+                  <h2 style="font-size:22px;letter-spacing:-0.6px;margin-bottom:12px;">Fast booking. Clean finish.</h2>
+                  <p>Text your vehicle type, location, and a few photos if the car is extra dirty. We confirm pricing before showing up.</p>
+                </div>
+                <div class="quick-prices">
+                  <div class="quick-price"><strong>$40</strong><span>Sedan</span></div>
+                  <div class="quick-price"><strong>$50</strong><span>Small SUV</span></div>
+                  <div class="quick-price"><strong>$60</strong><span>Large SUV</span></div>
+                </div>
+              </aside>
+            </div>
+          </div>
+
+          <div class="page-section">
+            <div class="section-head">
+              <div>
+                <span class="section-kicker">What we do</span>
+                <h2>Simple service. Better presentation. Less hassle.</h2>
               </div>
-              <div class="price-box">
-                <div class="vehicle">Large SUV / Large Truck</div>
-                <div class="price">$60</div>
-                <div class="small-note">Large trucks, 3-row SUVs, and bigger vehicles</div>
+              <p class="section-intro">This home page is now a clean summary only. Customers can quickly understand the service, then click into pricing, contact, or booking instead of scrolling through every section at once.</p>
+            </div>
+
+            <div class="summary-grid">
+              <article class="detail-card"><span class="detail-icon">01</span><h3>Exterior Wash</h3><p>Foam, hand wash, wheels, tires, windows, mirrors, microfiber dry, and tire shine for a finished look.</p></article>
+              <article class="detail-card"><span class="detail-icon">02</span><h3>Interior Express</h3><p>Trash removal, vacuuming, interior windows, and quick wipe-downs for a cleaner cabin.</p></article>
+              <article class="detail-card"><span class="detail-icon">03</span><h3>Mobile Convenience</h3><p>We come to your driveway so you can stay home while your vehicle gets cleaned.</p></article>
+            </div>
+          </div>
+        </section>
+
+        <!-- PRICING / SERVICES PAGE -->
+        <section class="site-page" id="services" data-page="services" aria-label="Pricing and services page">
+          <div class="page-hero services-hero">
+            <div class="hero-inner">
+              <div>
+                <span class="eyebrow">Pricing / Services</span>
+                <h1>Clear packages without confusing add-ons.</h1>
+                <p class="hero-copy">Pricing starts based on vehicle size and normal condition. Extra-heavy dirt, sand, mud, pet hair, stains, or neglected interiors may require an upcharge after photos.</p>
+                <div class="hero-buttons">
+                  <a class="btn gold" href="#book" data-page-link="book">Book Appointment</a>
+                  <a class="btn secondary" href="sms:4423036022">Text Questions</a>
+                </div>
+              </div>
+
+              <aside class="hero-card">
+                <div class="hero-card-photo">
+                  <img src="https://images.pexels.com/photos/6872473/pexels-photo-6872473.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Clean car being washed with water" onerror="this.style.display='none';" />
+                </div>
+                <div class="hero-card-body">
+                  <h2 style="font-size:22px;letter-spacing:-0.6px;margin-bottom:12px;">What the standard clean includes</h2>
+                  <p>Exterior standard wash plus an interior express clean. Perfect for maintenance-level details and normal everyday dirt.</p>
+                </div>
+              </aside>
+            </div>
+          </div>
+
+          <div class="page-section">
+            <div class="section-head">
+              <div><span class="section-kicker">Starting prices</span><h2>Choose by vehicle size.</h2></div>
+              <p class="section-intro">Keep it straightforward: sedan, small SUV/truck, or large SUV/truck. Final price can change if the vehicle is much dirtier than a normal maintenance clean.</p>
+            </div>
+
+            <div class="pricing-grid">
+              <article class="price-card"><h3>Sedan</h3><div class="price-amount">$40 <span>starting at</span></div><p class="price-note">Normal dirt / maintenance clean.</p></article>
+              <article class="price-card featured"><h3>Small Truck / SUV</h3><div class="price-amount">$50 <span>starting at</span></div><p class="price-note">Compact SUVs, crossovers, and small trucks.</p></article>
+              <article class="price-card"><h3>Large SUV / Truck</h3><div class="price-amount">$60 <span>starting at</span></div><p class="price-note">Large trucks, 3-row SUVs, and larger vehicles.</p></article>
+            </div>
+
+            <div class="notice"><strong>Upcharge note:</strong> extra-dirty vehicles, mud, heavy sand, stains, pet hair, or neglected interiors may cost more. Photos help us confirm a fair price before the appointment.</div>
+          </div>
+
+          <div class="page-section">
+            <div class="section-head">
+              <div><span class="section-kicker">Included service</span><h2>Exterior and interior, organized cleanly.</h2></div>
+              <p class="section-intro">This replaces the old scattered sections with one polished service page customers can understand fast.</p>
+            </div>
+
+            <div class="service-layout">
+              <div class="photo-stack">
+                <div class="photo-tile"><img src="https://images.pexels.com/photos/6872174/pexels-photo-6872174.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Foam car wash detailing photo" onerror="this.style.display='none';" /></div>
+                <div class="photo-tile"><img src="https://images.pexels.com/photos/31389821/pexels-photo-31389821.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Car interior cleaning detail photo" onerror="this.style.display='none';" /></div>
+              </div>
+
+              <div class="service-panels">
+                <article class="detail-card">
+                  <h3>Exterior Standard Wash</h3>
+                  <ul class="clean-list">
+                    <li>Paint-safe rinse using 1800 PSI and a wide 40° nozzle.</li>
+                    <li>Foam cannon soap application to loosen dirt before contact.</li>
+                    <li>Gentle microfiber hand wash for tougher spots.</li>
+                    <li>Wheels, tires, windows, and mirrors cleaned thoroughly.</li>
+                    <li>Microfiber hand dry to reduce streaks and water spots.</li>
+                    <li>Tire shine applied for a clean final look.</li>
+                  </ul>
+                </article>
+
+                <article class="detail-card">
+                  <h3>Interior Express Clean</h3>
+                  <ul class="clean-list">
+                    <li>Trash pickup and removal.</li>
+                    <li>Vacuum seats, floors, carpets, mats, and trunk.</li>
+                    <li>Interior windows cleaned for a clear finish.</li>
+                    <li>Quick wipe-down of dashboard, console, cupholders, and door panels.</li>
+                    <li>Floor mats shaken or vacuumed and placed back neatly.</li>
+                  </ul>
+                </article>
               </div>
             </div>
-            <div class="small-note" style="margin-top: 14px;">For extremely dirty vehicles, send photos first so we can quote fairly.</div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section class="section">
-        <div class="section-head">
-          <h2>How booking works</h2>
-          <p class="section-note">Keep it easy: text us, send the car type, and we handle the rest.</p>
-        </div>
-        <div class="process">
-          <div class="card"><div class="step-number">1</div><h3>Text us</h3><p class="muted">Send your vehicle type, location, and preferred time.</p></div>
-          <div class="card"><div class="step-number">2</div><h3>Send photos</h3><p class="muted">Photos help us quote extra dirty interiors, large SUVs, or special conditions.</p></div>
-          <div class="card"><div class="step-number">3</div><h3>We come to you</h3><p class="muted">Your driveway becomes the detail spot. No shop trip needed.</p></div>
-          <div class="card"><div class="step-number">4</div><h3>Enjoy the clean</h3><p class="muted">Exterior shine, fresh interior, clean wheels, clear windows.</p></div>
-        </div>
-      </section>
+        <!-- CONTACT PAGE -->
+        <section class="site-page" id="contact" data-page="contact" aria-label="Contact page">
+          <div class="page-hero contact-hero">
+            <div class="hero-inner">
+              <div>
+                <span class="eyebrow">Contact Us</span>
+                <h1>Questions before booking? Text us first.</h1>
+                <p class="hero-copy">Send your vehicle type, general location, and photos if the vehicle is very dirty. We’ll help confirm the right starting price and what to expect.</p>
+                <div class="hero-buttons">
+                  <a class="btn gold" href="sms:4423036022">Text 442-303-6022</a>
+                  <a class="btn secondary" href="tel:4423036022">Call 442-303-6022</a>
+                </div>
+              </div>
 
-      <section class="section" id="why">
-        <div class="split">
-          <div class="card">
-            <h2>⭐ Why choose us</h2>
-            <div class="item"><span class="icon">✔</span><span>We come to you — saving time, gas, and hassle.</span></div>
-            <div class="item"><span class="icon">✔</span><span>Relax at home while your car is cleaned in your driveway.</span></div>
-            <div class="item"><span class="icon">✔</span><span>Clean, consistent results with attention to detail every visit.</span></div>
-            <div class="item"><span class="icon">✔</span><span>Fair prices based on real value, vehicle size, and condition.</span></div>
+              <aside class="hero-card">
+                <div class="hero-card-photo">
+                  <img src="https://images.pexels.com/photos/5693657/pexels-photo-5693657.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Clean detailed vehicle reflection" onerror="this.style.display='none';" />
+                </div>
+                <div class="hero-card-body">
+                  <h2 style="font-size:22px;letter-spacing:-0.6px;margin-bottom:12px;">Best way to reach us</h2>
+                  <p>Text is best because you can send photos, location, vehicle size, and preferred appointment time all in one message.</p>
+                </div>
+              </aside>
+            </div>
           </div>
 
-          <div class="card">
-            <h2>🎁 Discounts</h2>
-            <div class="discount"><span class="strong">2 vehicles:</span> $5 off total</div>
-            <div class="discount"><span class="strong">3 vehicles:</span> $10 off total</div>
-            <div class="discount"><span class="strong">Refer a friend:</span> You get $5 off your next detail, and they get $5 off their first service.</div>
-            <p class="small-note" style="margin-top: 14px;">Book with friends, family, or neighbors and save with multi-car pricing.</p>
-          </div>
-        </div>
-      </section>
+          <div class="page-section">
+            <div class="section-head">
+              <div><span class="section-kicker">Contact info</span><h2>Fast, simple communication.</h2></div>
+              <p class="section-intro">This contact page keeps the business looking professional and gives customers a clear path before booking.</p>
+            </div>
 
-      <section class="section">
-        <div class="card final-cta">
-          <h2>Ready for a cleaner car?</h2>
-          <p>Text your vehicle type, general location, and a few photos if the car is extra dirty. We’ll confirm the price and get you booked.</p>
-          <div class="cta-row" style="justify-content:center;">
-            <a class="cta" href="sms:4423036022">Text 442-303-6022</a>
-          </div>
-        </div>
-      </section>
-    </main>
+            <div class="contact-grid">
+              <article class="contact-card">
+                <strong>SD Driveway Detailing</strong>
+                <p>Mobile exterior and interior cleaning brought directly to your driveway.</p>
+                <div class="contact-line"><span>Text / Phone</span><b>442-303-6022</b></div>
+                <div class="contact-line"><span>Service Style</span><b>Mobile driveway detailing</b></div>
+                <div class="contact-line"><span>Best For</span><b>Maintenance cleans</b></div>
+                <div class="contact-actions">
+                  <a class="btn gold" href="sms:4423036022">Text Now</a>
+                  <a class="btn secondary" href="#book" data-page-link="book">Book Appointment</a>
+                </div>
+              </article>
 
-    <footer class="footer">
-      <strong>SD Driveway Detailing</strong><br>
-      Mobile exterior and interior car cleaning brought directly to your driveway.
-      <div class="credits">
-        Photo credits: <a href="https://commons.wikimedia.org/wiki/File:Car_washing_activity_at_a_residential_driveway.jpg">Nenad Stojković / Wikimedia Commons / CC BY 2.0</a> •
-        <a href="https://commons.wikimedia.org/wiki/File:Mobile_Wash_partner_washing_a_car.jpg">Juanacosta84 / Wikimedia Commons / CC BY-SA 4.0</a> •
-        <a href="https://commons.wikimedia.org/wiki/File:Cleaning_interior.jpg">Juanacosta84 / Wikimedia Commons / CC BY-SA 4.0</a> •
-        <a href="https://commons.wikimedia.org/wiki/File:Clean_wheels_(4428900477).jpg">Andy Fogg / Wikimedia Commons / CC BY 2.0</a>
-      </div>
-    </footer>
+              <article class="contact-card">
+                <strong>What to send</strong>
+                <ul class="clean-list">
+                  <li>Your vehicle type: sedan, small SUV, large SUV, or truck.</li>
+                  <li>Your city or general area.</li>
+                  <li>Preferred appointment day or time window.</li>
+                  <li>Photos if the vehicle has heavy dirt, pet hair, stains, mud, or sand.</li>
+                  <li>Any specific area you want us to focus on.</li>
+                </ul>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- BOOK PAGE -->
+        <section class="site-page" id="book" data-page="book" aria-label="Book appointment page">
+          <div class="page-hero book-hero">
+            <div class="hero-inner">
+              <div>
+                <span class="eyebrow">Book Appointment</span>
+                <h1>Request your driveway detail.</h1>
+                <p class="hero-copy">Use the form below to create a clean booking text. It opens your messaging app with the details filled in, so you can send it straight to us.</p>
+                <div class="hero-buttons">
+                  <a class="btn gold" href="sms:4423036022">Text Directly</a>
+                  <a class="btn secondary" href="#services" data-page-link="services">Check Pricing</a>
+                </div>
+              </div>
+
+              <aside class="hero-card">
+                <div class="hero-card-photo">
+                  <img src="https://images.pexels.com/photos/6873100/pexels-photo-6873100.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Professional car detailing in progress" onerror="this.style.display='none';" />
+                </div>
+                <div class="hero-card-body">
+                  <h2 style="font-size:22px;letter-spacing:-0.6px;margin-bottom:12px;">Before confirming</h2>
+                  <p>For extra dirty vehicles, photos help us give an accurate quote and avoid surprise pricing.</p>
+                </div>
+              </aside>
+            </div>
+          </div>
+
+          <div class="page-section">
+            <div class="book-grid">
+              <aside class="book-panel">
+                <span class="section-kicker">How booking works</span>
+                <h2 style="margin-bottom:18px;">3 steps to get on the schedule.</h2>
+                <div class="process-grid" style="grid-template-columns:1fr;">
+                  <article class="step-card"><span class="step-number">1</span><h3>Send the request</h3><p>Use the form or text us directly with your vehicle type and area.</p></article>
+                  <article class="step-card"><span class="step-number">2</span><h3>Confirm the price</h3><p>We confirm the starting price and any upcharge if the car is beyond normal condition.</p></article>
+                  <article class="step-card"><span class="step-number">3</span><h3>We come to you</h3><p>Once scheduled, we show up and clean the vehicle in your driveway.</p></article>
+                </div>
+              </aside>
+
+              <section class="form-card" aria-label="Booking form">
+                <span class="section-kicker">Booking request</span>
+                <h2 style="margin-bottom:8px;">Build your text.</h2>
+                <p class="section-intro" style="font-size:15px;">This does not send online by itself. It opens a text message with your details filled in.</p>
+
+                <form class="booking-form" id="bookingForm">
+                  <label>Name
+                    <input id="customerName" type="text" placeholder="Your name" />
+                  </label>
+
+                  <label>Vehicle type
+                    <select id="vehicleType">
+                      <option value="Sedan">Sedan — starts at $40</option>
+                      <option value="Small Truck / SUV">Small Truck / SUV — starts at $50</option>
+                      <option value="Large SUV / Large Truck">Large SUV / Large Truck — starts at $60</option>
+                      <option value="Not sure">Not sure</option>
+                    </select>
+                  </label>
+
+                  <label>General location
+                    <input id="customerArea" type="text" placeholder="Example: Encinitas, Carlsbad, Oceanside" />
+                  </label>
+
+                  <label>Preferred day / time
+                    <input id="preferredTime" type="text" placeholder="Example: Saturday morning" />
+                  </label>
+
+                  <label>Vehicle condition / notes
+                    <textarea id="conditionNotes" placeholder="Example: normal dirt, some sand, pet hair, extra dirty interior, etc."></textarea>
+                  </label>
+
+                  <button class="btn gold" type="submit">Create Booking Text</button>
+                  <p class="form-note">After tapping the button, attach photos in your messages if the vehicle is very dirty.</p>
+                </form>
+              </section>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <strong>SD Driveway Detailing</strong><br />
+        Mobile exterior and interior cleaning brought directly to your driveway. Text <a href="sms:4423036022">442-303-6022</a> to book.<br />
+        Photos are loaded from Pexels direct image links. Replace with your own before-and-after photos once available for the strongest trust.
+      </footer>
+    </div>
   </div>
+
+<script>
+  const allowedPages = ["home", "services", "contact", "book"];
+  const pages = document.querySelectorAll("[data-page]");
+  const links = document.querySelectorAll("[data-page-link]");
+
+  function showPage(pageName) {
+    const page = allowedPages.includes(pageName) ? pageName : "home";
+
+    pages.forEach(section => {
+      section.classList.toggle("active", section.dataset.page === page);
+    });
+
+    links.forEach(link => {
+      link.classList.toggle("active", link.dataset.pageLink === page);
+    });
+
+    if (location.hash.replace("#", "") !== page) {
+      history.replaceState(null, "", "#" + page);
+    }
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  links.forEach(link => {
+    link.addEventListener("click", event => {
+      const pageName = link.dataset.pageLink;
+      if (!pageName) return;
+      event.preventDefault();
+      showPage(pageName);
+    });
+  });
+
+  window.addEventListener("hashchange", () => {
+    showPage(location.hash.replace("#", ""));
+  });
+
+  document.getElementById("bookingForm").addEventListener("submit", event => {
+    event.preventDefault();
+
+    const name = document.getElementById("customerName").value.trim() || "Not provided";
+    const vehicle = document.getElementById("vehicleType").value;
+    const area = document.getElementById("customerArea").value.trim() || "Not provided";
+    const time = document.getElementById("preferredTime").value.trim() || "Not provided";
+    const notes = document.getElementById("conditionNotes").value.trim() || "Normal condition / no extra notes";
+
+    const message = `Hi SD Driveway Detailing, I would like to book an appointment.\n\nName: ${name}\nVehicle: ${vehicle}\nLocation: ${area}\nPreferred day/time: ${time}\nCondition/notes: ${notes}\n\nI can send photos if needed.`;
+
+    window.location.href = "sms:4423036022?&body=" + encodeURIComponent(message);
+  });
+
+  showPage(location.hash.replace("#", "") || "home");
+</script>
 </body>
 </html>
