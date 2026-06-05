@@ -327,6 +327,110 @@ a{color:inherit}.page{display:none}.page.active{display:block}.container{width:m
   color:#ffffff!important;
 }
 
+
+
+/* v41 mobile font/overflow polish */
+@media (max-width:699px){
+  .nav-link{
+    font-size:10.5px!important;
+    line-height:1.08!important;
+    letter-spacing:.05px!important;
+    white-space:normal!important;
+    overflow-wrap:anywhere!important;
+    text-align:center!important;
+    padding:0 2px!important;
+  }
+  .page-title{
+    font-size:clamp(30px,8.6vw,36px)!important;
+    line-height:1.02!important;
+    letter-spacing:-1.25px!important;
+    text-wrap:balance!important;
+  }
+  .block-title{
+    font-size:clamp(22px,6vw,28px)!important;
+    line-height:1.08!important;
+    letter-spacing:-.75px!important;
+    text-wrap:balance!important;
+  }
+  .service-columns h3{font-size:16px!important;}
+  .service-list li{font-size:13.35px!important;line-height:1.42!important;}
+  .notice{font-size:12.8px!important;line-height:1.42!important;}
+  .pricing-table{width:100%!important;max-width:100%!important;}
+  .price-row{gap:8px!important;padding:13px 12px!important;}
+  .vehicle{font-size:13.8px!important;min-width:0!important;line-height:1.18!important;}
+  .price{font-size:22px!important;flex:0 0 auto!important;}
+  .discount{font-size:13px!important;line-height:1.35!important;}
+  .connected,.block{max-width:100%!important;overflow:hidden!important;}
+}
+@media (max-width:390px){
+  .nav-link{font-size:9.4px!important;letter-spacing:-.05px!important;}
+  .page-title{font-size:29px!important;}
+  .block-title{font-size:22px!important;}
+  .vehicle{font-size:13px!important;}
+  .price{font-size:21px!important;}
+}
+
+
+
+/* v42 connect Gold Standard Service header to details */
+#pricing-services .page-top{
+  padding:24px 0 0!important;
+  border-bottom:0!important;
+  background:transparent!important;
+}
+#pricing-services .page-top .container{
+  border:1px solid var(--line);
+  border-bottom:0;
+  border-radius:var(--radius) var(--radius) 0 0;
+  background:
+    radial-gradient(circle at 18% 0%,rgba(32,184,255,.18),transparent 36%),
+    linear-gradient(180deg,rgba(12,22,36,.96),rgba(5,10,18,.94));
+  box-shadow:var(--shadow);
+  padding:24px 22px 18px;
+  position:relative;
+  overflow:hidden;
+}
+#pricing-services .page-top .container:after{
+  content:"";
+  position:absolute;
+  left:22px;
+  right:22px;
+  bottom:0;
+  height:1px;
+  background:linear-gradient(90deg,rgba(32,184,255,.45),rgba(216,225,236,.12),transparent);
+}
+#pricing-services .page-title{
+  margin:0!important;
+  font-size:clamp(34px,8.6vw,54px);
+  letter-spacing:-1.8px;
+}
+#pricing-services .section{
+  padding-top:0!important;
+}
+#pricing-services .connected{
+  border-top:0!important;
+  border-radius:0 0 var(--radius) var(--radius)!important;
+  box-shadow:var(--shadow);
+}
+#pricing-services .connected > .block:first-child{
+  padding-top:20px!important;
+}
+@media (max-width:699px){
+  #pricing-services .page-top{padding-top:18px!important}
+  #pricing-services .page-top .container{
+    padding:20px 17px 15px;
+    border-radius:22px 22px 0 0;
+  }
+  #pricing-services .page-top .container:after{left:17px;right:17px}
+  #pricing-services .page-title{
+    font-size:clamp(31px,9.2vw,38px)!important;
+    letter-spacing:-1.35px!important;
+    line-height:1!important;
+  }
+  #pricing-services .connected{border-radius:0 0 22px 22px!important}
+  #pricing-services .connected > .block:first-child{padding-top:17px!important}
+}
+
 </style>
 </head>
 <body>
@@ -406,7 +510,7 @@ a{color:inherit}.page{display:none}.page.active{display:block}.container{width:m
       <div class="connected">
         <div class="block service-wrap">
           <div>
-            <h2 class="block-title">Gold Standard Service</h2>
+            <h2 class="block-title">What It Includes</h2>
             <div class="notice"><strong>Starting at $50!</strong> A complete exterior and interior clean focused on safely getting your vehicle fresh, clean, and ready to drive.</div>
             <div class="service-columns" style="margin-top:16px;">
               <div>
