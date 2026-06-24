@@ -526,6 +526,40 @@ a{color:inherit}.page{display:none}.page.active{display:block}.container{width:m
   line-height:1.45;
   max-width:310px;
 }
+.footer-socials{
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:14px;
+}
+.footer-social-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  min-height:40px;
+  padding:10px 13px;
+  border-radius:999px;
+  border:1px solid rgba(216,225,236,.16);
+  background:rgba(255,255,255,.045);
+  color:#fff;
+  text-decoration:none;
+  font-weight:950;
+  line-height:1;
+}
+.footer-social-btn:hover{
+  border-color:rgba(32,184,255,.55);
+  background:rgba(8,124,255,.14);
+}
+.footer-social-icon{
+  width:17px;
+  height:17px;
+  display:block;
+  flex:0 0 auto;
+  fill:currentColor;
+}
 .footer-col h3{
   margin:0 0 10px;
   color:#fff;
@@ -567,6 +601,7 @@ a{color:inherit}.page{display:none}.page.active{display:block}.container{width:m
     justify-items:center!important;
   }
   .footer-brand-copy{max-width:340px}
+  .footer-socials{justify-content:center}
   .footer-links{justify-items:center}
   .footer .container.footer-bottom{
     display:grid!important;
@@ -773,14 +808,22 @@ a{color:inherit}.page{display:none}.page.active{display:block}.container{width:m
     <div class="footer-brand-block">
       <div class="footer-brand-title">SD Driveway Detailing</div>
       <p class="footer-brand-copy">Mobile detailing brought right to your driveway in San Diego and nearby areas.</p>
+      <div class="footer-socials" aria-label="Social links">
+        <a class="footer-social-btn" href="https://www.facebook.com/search/pages/?q=SD%20Driveway%20Detailing" target="_blank" rel="noopener" aria-label="Open SD Driveway Detailing on Facebook">
+          <svg class="footer-social-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.2 8.2V6.9c0-.7.5-1.2 1.2-1.2h1.4V2.4c-.7-.1-1.6-.2-2.6-.2-2.8 0-4.7 1.7-4.7 4.8v1.2H6.6v3.7h2.9v9.9h3.8v-9.9h3l.5-3.7h-3.6z"/></svg>
+          Facebook
+        </a>
+        <a class="footer-social-btn" href="https://www.instagram.com/sddrivewaydetailing/" target="_blank" rel="noopener" aria-label="Open SD Driveway Detailing on Instagram">
+          <svg class="footer-social-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.8 2.4h8.4c3 0 5.4 2.4 5.4 5.4v8.4c0 3-2.4 5.4-5.4 5.4H7.8c-3 0-5.4-2.4-5.4-5.4V7.8c0-3 2.4-5.4 5.4-5.4zm0 3.2c-1.2 0-2.2 1-2.2 2.2v8.4c0 1.2 1 2.2 2.2 2.2h8.4c1.2 0 2.2-1 2.2-2.2V7.8c0-1.2-1-2.2-2.2-2.2H7.8zm4.2 2.5a3.9 3.9 0 1 1 0 7.8 3.9 3.9 0 0 1 0-7.8zm0 2.3a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2zm4.2-2.6a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8z"/></svg>
+          Instagram
+        </a>
+      </div>
     </div>
     <div class="footer-col">
       <h3>Contact</h3>
       <div class="footer-links">
         <a class="footer-link" href="sms:4423036022">Text 442-303-6022</a>
         <a class="footer-link" href="tel:4423036022">Call 442-303-6022</a>
-        <a class="footer-link" href="https://www.facebook.com/sddrivewaydetailing" target="_blank" rel="noopener">Facebook Page</a>
-        <a class="footer-link" href="https://www.instagram.com/sddrivewaydetailing/" target="_blank" rel="noopener">Instagram</a>
       </div>
     </div>
     <div class="footer-col">
@@ -796,7 +839,6 @@ a{color:inherit}.page{display:none}.page.active{display:block}.container{width:m
       <div class="footer-links">
         <a class="footer-link" href="#pricing-services" data-page-target="pricing-services">Gold Standard Service</a>
         <a class="footer-link" href="#pricing-services" data-page-target="pricing-services">Hydrophobic Sealant</a>
-        <a class="footer-link" href="#booking" data-page-target="booking">Extra Care Package</a>
       </div>
     </div>
   </div>
