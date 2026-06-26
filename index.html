@@ -1214,6 +1214,67 @@ a{color:inherit}.page{display:none}.page.active{display:block}.container{width:m
   }
 }
 
+
+/* per-car add-ons in booking form */
+.car-addons{
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:rgba(255,255,255,.035);
+  padding:14px;
+}
+.car-addons h3{
+  margin:0 0 6px;
+  font-size:17px;
+  letter-spacing:-.25px;
+  color:#fff;
+}
+.car-addons-copy{
+  margin:0 0 12px;
+  color:#aebaca;
+  font-size:13.5px;
+  line-height:1.45;
+}
+.car-addons-options{
+  display:grid;
+  gap:10px;
+}
+.car-addon-option{
+  display:flex!important;
+  align-items:flex-start;
+  gap:10px;
+  padding:12px;
+  border:1px solid rgba(216,225,236,.14);
+  border-radius:15px;
+  background:rgba(255,255,255,.035);
+  cursor:pointer;
+}
+.car-addon-option input[type="checkbox"]{
+  width:18px!important;
+  height:18px!important;
+  min-width:18px!important;
+  margin:2px 0 0!important;
+  padding:0!important;
+  accent-color:var(--blue2);
+  box-shadow:none!important;
+}
+.car-addon-option span{
+  display:grid;
+  gap:2px;
+  color:#dbe7f4;
+  line-height:1.3;
+}
+.car-addon-option small{
+  color:#93a3b7;
+  font-weight:600;
+  line-height:1.35;
+}
+@media (max-width:699px){
+  .car-addons{padding:12px;border-radius:16px}
+  .car-addons h3{font-size:16px}
+  .car-addons-copy{font-size:13px}
+  .car-addon-option{padding:11px}
+}
+
 </style>
 </head>
 <body>
@@ -1491,17 +1552,17 @@ function addCar(){
         <option value="Not sure - I can send photos">Not sure - I can send photos</option>
       </select>
     </label>
-    <div class="full extra-care-package">
-      <h3>Extra Care Package</h3>
-      <p class="extra-care-copy">Optional upcharges for this specific vehicle. Pet hair may need a quote depending on severity.</p>
-      <div class="extra-care-options">
-        <label class="extra-care-option">
+    <div class="full car-addons">
+      <h3>Optional Add-ons for This Car</h3>
+      <p class="car-addons-copy">Select add-ons only for this specific vehicle.</p>
+      <div class="car-addons-options">
+        <label class="car-addon-option">
           <input class="carpet-pattern" type="checkbox">
-          <span><strong>$10 Carpet Pattern</strong><small>Clean finishing lines after the vacuum.</small></span>
+          <span><strong>$10 Carpet Pattern</strong><small>Adds clean finishing lines after the vacuum.</small></span>
         </label>
-        <label class="extra-care-option">
+        <label class="car-addon-option">
           <input class="pet-hair" type="checkbox">
-          <span><strong>$30+ Pet Hair Removal</strong><small>Needs quote if heavy or spread throughout the vehicle.</small></span>
+          <span><strong>$30+ Pet Hair Removal</strong><small>Select this only if this vehicle has pet hair. Heavy pet hair may need a quote.</small></span>
         </label>
       </div>
     </div>`;
@@ -1523,7 +1584,7 @@ function vehicleDetails(){
     if(entry.querySelector('.carpet-pattern')?.checked) addOns.push('$10 Carpet Pattern');
     if(entry.querySelector('.pet-hair')?.checked) addOns.push('$30+ Pet Hair Removal (needs quote)');
     const extraCare = addOns.length ? addOns.join(', ') : 'None selected';
-    return `Car ${index + 1}: ${type}\nSize: ${size}\nCondition: ${condition}\nExtra Care Package: ${extraCare}`;
+    return `Car ${index + 1}: ${type}\nSize: ${size}\nCondition: ${condition}\nAdd-ons for this car: ${extraCare}`;
   }).join('\n\n');
 }
 function bookingMessage(){
