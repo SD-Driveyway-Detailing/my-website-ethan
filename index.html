@@ -1275,6 +1275,27 @@ a{color:inherit}.page{display:none}.page.active{display:block}.container{width:m
   .car-addon-option{padding:11px}
 }
 
+/* v66 condition option subheadings */
+.condition-guide{
+  display:grid;
+  gap:6px;
+  margin-top:7px;
+  padding:10px 11px;
+  border:1px solid rgba(216,225,236,.12);
+  border-radius:13px;
+  background:rgba(255,255,255,.028);
+}
+.condition-guide div{
+  color:#9fb0c4;
+  font-size:12.5px;
+  line-height:1.35;
+  font-weight:650;
+}
+.condition-guide strong{
+  color:#fff;
+  font-weight:850;
+}
+
 </style>
 </head>
 <body>
@@ -1547,8 +1568,8 @@ function addCar(){
     <label class="full">Condition
       <select class="car-condition">
         <option value="Normal dirt / maintenance clean">Normal dirt / maintenance clean</option>
-        <option value="Pretty dirty">Pretty dirty</option>
-        <option value="Very dirty / needs quote">Very dirty / needs quote</option>
+        <option value="Needs a Deeper Clean">Needs a Deeper Clean</option>
+        <option value="Very Dirty / needs quote">Very Dirty / needs quote</option>
         <option value="Not sure - I can send photos">Not sure - I can send photos</option>
       </select>
     </label>
