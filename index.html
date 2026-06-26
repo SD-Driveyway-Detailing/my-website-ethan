@@ -1379,20 +1379,6 @@ a{color:inherit}.page{display:none}.page.active{display:block}.container{width:m
               <div class="car-list" id="carList"></div>
               <button class="btn btn-secondary add-car" type="button" id="addCar">+ Add another car</button>
             </div>
-            <div class="full extra-care-package">
-              <h3>Extra Care Package</h3>
-              <p class="extra-care-copy">Optional upcharges you can add to your request. Pet hair may need a quote depending on severity.</p>
-              <div class="extra-care-options">
-                <label class="extra-care-option">
-                  <input id="carpetPattern" name="carpetPattern" type="checkbox">
-                  <span><strong>$10 Carpet Pattern</strong><small>Clean finishing lines after the vacuum.</small></span>
-                </label>
-                <label class="extra-care-option">
-                  <input id="petHair" name="petHair" type="checkbox">
-                  <span><strong>$30+ Pet Hair Removal</strong><small>Needs quote if heavy or spread throughout the vehicle.</small></span>
-                </label>
-              </div>
-            </div>
             <label class="full">Extra notes
               <textarea id="notes" name="notes" placeholder="Stains, excessive dirt, trash, water access, apartment/gate details, or anything else we should know."></textarea>
             </label>
@@ -1504,7 +1490,21 @@ function addCar(){
         <option value="Very dirty / needs quote">Very dirty / needs quote</option>
         <option value="Not sure - I can send photos">Not sure - I can send photos</option>
       </select>
-    </label>`;
+    </label>
+    <div class="full extra-care-package">
+      <h3>Extra Care Package</h3>
+      <p class="extra-care-copy">Optional upcharges for this specific vehicle. Pet hair may need a quote depending on severity.</p>
+      <div class="extra-care-options">
+        <label class="extra-care-option">
+          <input class="carpet-pattern" type="checkbox">
+          <span><strong>$10 Carpet Pattern</strong><small>Clean finishing lines after the vacuum.</small></span>
+        </label>
+        <label class="extra-care-option">
+          <input class="pet-hair" type="checkbox">
+          <span><strong>$30+ Pet Hair Removal</strong><small>Needs quote if heavy or spread throughout the vehicle.</small></span>
+        </label>
+      </div>
+    </div>`;
   entry.querySelector('.remove-car').addEventListener('click', () => {
     entry.remove();
     refreshCarLabels();
@@ -1519,14 +1519,12 @@ function vehicleDetails(){
     const type = entry.querySelector('.car-type')?.value.trim() || 'Not listed';
     const size = entry.querySelector('.car-size')?.value || 'Not listed';
     const condition = entry.querySelector('.car-condition')?.value || 'Not listed';
-    return `Car ${index + 1}: ${type}\nSize: ${size}\nCondition: ${condition}`;
+    const addOns = [];
+    if(entry.querySelector('.carpet-pattern')?.checked) addOns.push('$10 Carpet Pattern');
+    if(entry.querySelector('.pet-hair')?.checked) addOns.push('$30+ Pet Hair Removal (needs quote)');
+    const extraCare = addOns.length ? addOns.join(', ') : 'None selected';
+    return `Car ${index + 1}: ${type}\nSize: ${size}\nCondition: ${condition}\nExtra Care Package: ${extraCare}`;
   }).join('\n\n');
-}
-function extraCareDetails(){
-  const addOns = [];
-  if(document.getElementById('carpetPattern')?.checked) addOns.push('$10 Carpet Pattern');
-  if(document.getElementById('petHair')?.checked) addOns.push('$30+ Pet Hair Removal (needs quote)');
-  return addOns.length ? addOns.join('\n') : 'None selected';
 }
 function bookingMessage(){
   return `Hi SD Driveway Detailing, I'd like to request a quote.
@@ -1537,9 +1535,6 @@ Preferred day/time: ${val('time')}
 Number of vehicles: ${document.querySelectorAll('.car-entry').length}
 
 ${vehicleDetails()}
-
-Extra Care Package:
-${extraCareDetails()}
 
 Extra notes: ${val('notes')}`;
 }
