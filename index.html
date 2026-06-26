@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1275,25 +1276,35 @@ a{color:inherit}.page{display:none}.page.active{display:block}.container{width:m
   .car-addon-option{padding:11px}
 }
 
-/* v66 condition option subheadings */
-.condition-guide{
+/* v67 visible condition subheadings under each car */
+.condition-helper{
+  grid-column:1/-1;
   display:grid;
   gap:6px;
-  margin-top:7px;
+  margin-top:-4px;
   padding:10px 11px;
   border:1px solid rgba(216,225,236,.12);
   border-radius:13px;
-  background:rgba(255,255,255,.028);
+  background:rgba(255,255,255,.035);
 }
-.condition-guide div{
+.condition-helper div{
   color:#9fb0c4;
   font-size:12.5px;
   line-height:1.35;
   font-weight:650;
 }
-.condition-guide strong{
+.condition-helper strong{
   color:#fff;
   font-weight:850;
+}
+@media (max-width:699px){
+  .condition-helper{
+    margin-top:-2px;
+    padding:9px 10px;
+  }
+  .condition-helper div{
+    font-size:12.2px;
+  }
 }
 
 </style>
@@ -1567,12 +1578,16 @@ function addCar(){
     </label>
     <label class="full">Condition
       <select class="car-condition">
-        <option value="Normal dirt / maintenance clean">Normal dirt / maintenance clean</option>
+        <option value="Maintenance Clean">Maintenance Clean</option>
         <option value="Needs a Deeper Clean">Needs a Deeper Clean</option>
-        <option value="Very Dirty / needs quote">Very Dirty / needs quote</option>
-        <option value="Not sure - I can send photos">Not sure - I can send photos</option>
+        <option value="Very Dirty">Very Dirty</option>
       </select>
     </label>
+    <div class="condition-helper">
+      <div><strong>Maintenance Clean:</strong> Light dirt, normal upkeep, vehicle is already in decent shape.</div>
+      <div><strong>Needs a Deeper Clean:</strong> Noticeable dirt, crumbs, dust, stains, or buildup.</div>
+      <div><strong>Very Dirty:</strong> Heavy dirt, lots of trash, mud, stains, spills, or extra time needed.</div>
+    </div>
     <div class="full car-addons">
       <h3>Optional Add-ons for This Car</h3>
       <p class="car-addons-copy">Select add-ons only for this specific vehicle.</p>
