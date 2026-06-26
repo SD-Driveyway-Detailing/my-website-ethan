@@ -1307,6 +1307,14 @@ a{color:inherit}.page{display:none}.page.active{display:block}.container{width:m
   }
 }
 
+/* v68 inline condition descriptions */
+.car-condition{
+  color:#dbe7f4!important;
+}
+.car-condition option{
+  color:#c7d3e1!important;
+}
+
 </style>
 </head>
 <body>
@@ -1578,16 +1586,11 @@ function addCar(){
     </label>
     <label class="full">Condition
       <select class="car-condition">
-        <option value="Maintenance Clean">Maintenance Clean</option>
-        <option value="Needs a Deeper Clean">Needs a Deeper Clean</option>
-        <option value="Very Dirty">Very Dirty</option>
+        <option value="Maintenance Clean — light upkeep">Maintenance Clean — light upkeep</option>
+        <option value="Needs a Deeper Clean — noticeable buildup">Needs a Deeper Clean — noticeable buildup</option>
+        <option value="Very Dirty — heavy dirt or stains">Very Dirty — heavy dirt or stains</option>
       </select>
     </label>
-    <div class="condition-helper">
-      <div><strong>Maintenance Clean:</strong> Light dirt, normal upkeep, vehicle is already in decent shape.</div>
-      <div><strong>Needs a Deeper Clean:</strong> Noticeable dirt, crumbs, dust, stains, or buildup.</div>
-      <div><strong>Very Dirty:</strong> Heavy dirt, lots of trash, mud, stains, spills, or extra time needed.</div>
-    </div>
     <div class="full car-addons">
       <h3>Optional Add-ons for This Car</h3>
       <p class="car-addons-copy">Select add-ons only for this specific vehicle.</p>
