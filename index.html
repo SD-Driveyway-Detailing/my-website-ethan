@@ -2879,6 +2879,23 @@ body:has(.page:target) .page.active:not(:target){
   }
 }
 
+
+/* Premium Package cleanup: hide add-ons already included instead of showing them as Free */
+.car-entry.premium-package-selected [data-premium-card],
+.car-entry.premium-package-selected .premium-addon-helper{
+  display:none!important;
+}
+
+.car-entry.premium-package-selected .addon-free,
+.car-entry.premium-package-selected .premium-included-note{
+  display:none!important;
+}
+
+.car-entry.premium-package-selected .addon-price-original{
+  color:#aebaca!important;
+  text-decoration:none!important;
+}
+
 </style>
 </head>
 <body>
@@ -3107,7 +3124,6 @@ body:has(.page:target) .page.active:not(:target){
   </div>
   <div class="container footer-bottom">
     <span>© SD Driveway Detailing</span>
-    <a class="tiny-link" href="#home" data-page-target="home">Back to Home</a>
   </div>
 </footer>
 <script>
@@ -3232,25 +3248,17 @@ function addCar(){
 function syncPremiumIncludedAddons(entry){
   const isPremium = entry.querySelector('.car-package')?.value === 'Premium Package';
   entry.classList.toggle('premium-package-selected', isPremium);
+
   entry.querySelectorAll('.car-addon[data-premium-included="true"]').forEach(addon => {
     const card = addon.closest('.check-card');
-    if(isPremium){
-      if(!addon.checked){
-        addon.dataset.premiumAutoChecked = 'true';
-      }
-      addon.checked = true;
-      addon.disabled = true;
-      addon.value = addon.dataset.includedValue || addon.value;
-      card?.classList.add('included-free');
-    }else{
-      addon.disabled = false;
-      if(addon.dataset.premiumAutoChecked === 'true'){
-        addon.checked = false;
-      }
-      delete addon.dataset.premiumAutoChecked;
-      addon.value = addon.dataset.standardValue || addon.value;
-      card?.classList.remove('included-free');
-    }
+
+    // Premium already includes these services, so do not show them as "Free"
+    // and do not include them in the add-ons line of the quote message.
+    addon.checked = false;
+    addon.disabled = isPremium;
+    addon.value = addon.dataset.standardValue || addon.value;
+    delete addon.dataset.premiumAutoChecked;
+    card?.classList.remove('included-free');
   });
 }
 document.getElementById('addCar').addEventListener('click', addCar);
