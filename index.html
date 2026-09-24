@@ -2899,6 +2899,8 @@ body:has(.page:target) .page.active:not(:target){
 <link rel="icon" type="image/png" href="/favicon.png?v=2">
 <link rel="shortcut icon" type="image/png" href="/favicon.png?v=2">
 
+<script src="/google-ads-config.js" defer></script>
+<script src="/quote-tracking.js" defer></script>
 </head>
 <body>
 <header class="site-header">
@@ -3300,7 +3302,12 @@ function updatePreview(){
 document.getElementById('bookingForm').addEventListener('submit', e => {
   e.preventDefault();
   updatePreview();
-  window.location.href = `sms:4423036022?&body=${encodeURIComponent(bookingMessage())}`;
+  const message = bookingMessage();
+  if (typeof window.sddOpenQuoteText === 'function') {
+    window.sddOpenQuoteText(message);
+  } else {
+    window.location.href = `sms:4423036022?&body=${encodeURIComponent(message)}`;
+  }
 });
 document.getElementById('previewMessage').addEventListener('click', updatePreview);
 const copyMessageBtn = document.getElementById('copyMessage');
