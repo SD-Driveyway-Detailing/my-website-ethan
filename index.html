@@ -3189,12 +3189,12 @@ body:has(#booking:target) .nav-link[data-page-target="booking"]{
       <div class="book-layout">
         <aside class="book-info booking-process-card">
           <h2>Get your detail quote.</h2>
-          <p><strong>Tell us about your vehicle and location.</strong> Tap Email Quote Request to open your email app with your details filled in, then press Send. We’ll text you with your quote and availability.</p>
+          <p><strong>Tell us about your vehicle and location.</strong> Submit your request below. We’ll text you with your quote and availability.</p>
           <p class="quote-next-step">Your full address is only needed when we arrange your booking. Sending a request doesn’t reserve an appointment.</p>
           <div class="booking-secure-bar">Your details are only used to prepare your quote and contact you about your detail.</div>
         </aside>
         <div class="book-form">
-          <form id="bookingForm" class="form-grid">
+          <form id="bookingForm" class="form-grid" action="https://formsubmit.co/sdrivewaydetailing@gmail.com" method="POST">
             <input type="hidden" name="_subject" value="New Quote Request - SD Driveway Detailing">
             <input type="hidden" name="_template" value="table">
             <input type="hidden" name="_captcha" value="false">
@@ -3293,7 +3293,7 @@ body:has(#booking:target) .nav-link[data-page-target="booking"]{
                 </label>
               </div>
             </details>
-            <button class="btn btn-primary book-button full" type="submit" id="sendQuoteRequest">Email Quote Request</button>
+            <button class="btn btn-primary book-button full" type="submit" id="sendQuoteRequest">Send Quote Request</button>
             <p class="full" id="quoteHandoffStatus" role="status" aria-live="polite"></p>
           </form>
           <div class="copy-row">
@@ -3497,17 +3497,42 @@ function leadSource(){
   return remembered || params.get('utm_source') || 'Website';
 }
 const bookingForm = document.getElementById('bookingForm');
-bookingForm.addEventListener('submit', e => {
+bookingForm.addEventListener('submit', async e => {
   e.preventDefault();
-  if(!bookingForm.reportValidity()) return;
-  const message = bookingMessage() + '\n\nLead source: ' + leadSource();
-  const emailURL = 'mailto:sdrivewaydetailing@gmail.com?subject=' +
-    encodeURIComponent('New Quote Request - SD Driveway Detailing') +
-    '&body=' + encodeURIComponent(message);
+  const button = document.getElementById('sendQuoteRequest');
   const status = document.getElementById('quoteHandoffStatus');
-  status.textContent = 'Your request is not sent yet. Press Send in your email app. If it did not open, copy the preview below and email sdrivewaydetailing@gmail.com, or text 442-303-6022.';
-  updatePreview();
-  window.location.href = emailURL;
+  if(button.disabled || !bookingForm.reportValidity()) return;
+  document.getElementById('quoteMessage').value = bookingMessage();
+  document.getElementById('quoteSource').value = leadSource();
+  const payload = Object.fromEntries(new FormData(bookingForm));
+  delete payload._next;
+  button.disabled = true;
+  button.textContent = 'Sending…';
+  status.textContent = '';
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 20000);
+  try {
+    const response = await fetch('https://formsubmit.co/ajax/sdrivewaydetailing@gmail.com', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json', 'Accept':'application/json'},
+      body: JSON.stringify(payload),
+      signal: controller.signal
+    });
+    const result = await response.json();
+    if(!response.ok || ![true, 'true'].includes(result.success)) throw new Error('Submission rejected');
+    if(/activat|confirm.*email|verify.*email/i.test(result.message || '')) throw new Error('Email setup incomplete');
+    button.textContent = 'Request submitted';
+    status.textContent = 'Thank you! Your quote request has been submitted. We’ll text you with your quote and availability.';
+    bookingForm.dataset.submitted = 'true';
+  } catch(error) {
+    status.textContent = error.name === 'AbortError'
+      ? 'We couldn’t confirm submission. Please text 442-303-6022 before trying again.'
+      : 'Your request could not be confirmed. Please try again or text 442-303-6022.';
+    button.disabled = false;
+    button.textContent = 'Send Quote Request';
+  } finally {
+    clearTimeout(timeout);
+  }
 });
 document.getElementById('previewMessage').addEventListener('click', updatePreview);
 const copyMessageBtn = document.getElementById('copyMessage');
