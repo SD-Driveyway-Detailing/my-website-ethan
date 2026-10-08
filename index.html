@@ -3518,16 +3518,21 @@ bookingForm.addEventListener('submit', async e => {
       body: JSON.stringify(payload),
       signal: controller.signal
     });
-    const result = await response.json();
-    if(!response.ok || ![true, 'true'].includes(result.success)) throw new Error('Submission rejected');
-    if(/activat|confirm.*email|verify.*email/i.test(result.message || '')) throw new Error('Email setup incomplete');
+    const responseText = await response.text();
+    let result;
+    try { result = JSON.parse(responseText); }
+    catch { throw new Error('Form service returned HTTP ' + response.status + ' instead of a valid response.'); }
+    if(!response.ok || ![true, 'true'].includes(result.success)) {
+      throw new Error(String(result.message || result.error || ('Form service rejected submission (HTTP ' + response.status + ').')));
+    }
+    if(/activat|confirm.*email|verify.*email/i.test(result.message || '')) throw new Error(String(result.message));
     button.textContent = 'Request submitted';
     status.textContent = 'Thank you! Your quote request has been submitted. We’ll text you with your quote and availability.';
     bookingForm.dataset.submitted = 'true';
   } catch(error) {
     status.textContent = error.name === 'AbortError'
       ? 'We couldn’t confirm submission. Please text 442-303-6022 before trying again.'
-      : 'Your request could not be confirmed. Please try again or text 442-303-6022.';
+      : 'Unable to submit: ' + (error.message || 'Unknown error') + ' Please text 442-303-6022 if this continues.';
     button.disabled = false;
     button.textContent = 'Send Quote Request';
   } finally {
