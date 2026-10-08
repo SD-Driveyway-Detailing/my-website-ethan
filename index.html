@@ -2971,6 +2971,12 @@ body:has(#booking:target) .nav-link[data-page-target="booking"]{
 }
 
 
+
+/* Direct homepage anchors for Google Ads sitelinks; offset fixed navigation */
+#customer-reviews-title, #why-choose-us, #message-from-founder { scroll-margin-top: 130px; }
+@media (max-width: 699px) {
+  #customer-reviews-title, #why-choose-us, #message-from-founder { scroll-margin-top: 90px; }
+}
 </style>
 </head>
 <body>
@@ -3031,7 +3037,7 @@ body:has(#booking:target) .nav-link[data-page-target="booking"]{
           </div>
           <p class="review-verification">Rating checked October 1, 2026. Read the full customer reviews on Google using the link above.</p>
         </section>
-        <div class="trust-panel">
+        <div class="trust-panel" id="why-choose-us">
           <div class="trust-head">
             <h2>Why Choose Us?</h2>
           </div>
@@ -3065,7 +3071,7 @@ body:has(#booking:target) .nav-link[data-page-target="booking"]{
             </div>
           </div>
         </div>
-        <div class="owner-quote-section">
+        <div class="owner-quote-section" id="message-from-founder">
           <div class="owner-quote-card">
             <p class="owner-quote-text">“As a car enthusiast who loves to drive, I know your car can feel like a second home. When you’re like me and you’re always on the road, keeping it clean makes every drive feel better. I started by detailing my own car, then helping friends and family, and now I want to bring that same clean, cared-for feeling straight to your driveway.”</p>
             <div class="owner-quote-signoff">— Ethan<br>Founder, SD Driveway Detailing</div>
@@ -3360,7 +3366,7 @@ body:has(#booking:target) .nav-link[data-page-target="booking"]{
 const pages = document.querySelectorAll('.page');
 const pageIds = new Set([...pages].map(page => page.id));
 
-function showPage(id, pushHash = false){
+function showPage(id, pushHash = false, scrollToTop = true){
   if(!pageIds.has(id)) return;
 
   pages.forEach(page => {
@@ -3378,12 +3384,23 @@ function showPage(id, pushHash = false){
     history.replaceState(null, '', '#' + id);
   }
 
-  window.scrollTo({top:0, behavior:'smooth'});
+  if(scrollToTop) window.scrollTo({top:0, behavior:'smooth'});
 }
 
 function showPageFromHash(){
-  const id = (location.hash || '#home').replace('#','');
-  showPage(pageIds.has(id) ? id : 'home', false);
+  const id = decodeURIComponent((location.hash || '#home').slice(1));
+  if(pageIds.has(id)){
+    showPage(id, false);
+    return;
+  }
+  // A direct link to a section on the homepage must not be reset to page top.
+  const anchor = document.getElementById(id);
+  if(anchor && anchor.closest('#home')){
+    showPage('home', false, false);
+    requestAnimationFrame(() => anchor.scrollIntoView({behavior:'auto', block:'start'}));
+    return;
+  }
+  showPage('home', false);
 }
 
 window.addEventListener('hashchange', showPageFromHash);
