@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>SD Driveway Detailing</title>
+<title>SD Driveway Detailing | Final Website Draft</title>
 <meta name="description" content="Professional mobile detailing brought right to your home by a small local business that actually cares. Serving Carlsbad and nearby areas with everything from maintenance washes to showroom-quality details." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -2894,15 +2894,88 @@ body:has(.page:target) .page.active:not(:target){
   text-decoration:none!important;
 }
 
+/* Customer proof and a simpler first quote request. */
+.service-area{color:var(--blue2);font-size:12px;font-weight:800;letter-spacing:.45px;margin:0 0 12px}
+.google-proof{display:inline-flex;align-items:center;flex-wrap:wrap;gap:8px 12px;margin-top:18px;color:#e3ebf5;text-decoration:none;font-size:13px;line-height:1.5}
+.review-stars{color:#ffc766;letter-spacing:2px;white-space:nowrap}
+.google-proof:hover,.reviews-link:hover{text-decoration:underline}
+.customer-reviews{margin-top:30px;padding:22px;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(180deg,rgba(12,22,36,.92),rgba(5,10,18,.94))}
+.reviews-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:18px}
+.reviews-heading h2{margin:0 0 6px;font-size:clamp(24px,5vw,32px);line-height:1.12;letter-spacing:-.9px}
+.reviews-heading p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}
+.reviews-link{color:var(--blue2);font-size:13px;font-weight:800;line-height:1.5;white-space:nowrap}
+.review-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.review-card{display:flex;flex-direction:column;gap:12px;margin:0;padding:18px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.025)}
+.review-card h3{margin:0;color:#f8fbff;font-size:18px;line-height:1.3;letter-spacing:-.35px}
+.review-card .review-copy{margin:0;color:#cbd6e3;font-size:14px;line-height:1.65}
+.review-card figcaption{margin-top:auto;color:#b9c6d6;font-size:13px;line-height:1.5}
+.review-card cite{font-style:normal;font-weight:700;color:#dbe7f4}
+.review-type{display:block;margin-top:3px;color:var(--soft);font-size:11px}
+.review-verification{margin:16px 0 0;color:var(--soft);font-size:11px;line-height:1.5}
+.addon-price-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:16px}
+.addon-price-card{padding:18px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.025);min-width:0}
+.addon-price-card h3{margin:0 0 8px;display:flex;justify-content:space-between;gap:12px;font-size:15px;line-height:1.45}
+.addon-price-card h3 span{color:var(--blue2);white-space:nowrap;font-size:14px}
+.addon-price-card p,.addon-pricing-copy{margin:0;color:#b9c6d6;font-size:13px;line-height:1.6}
+.addon-pricing-copy{margin-top:12px;max-width:760px}
+.addon-quote-link{margin-top:18px;min-height:44px;font-size:13px}
+#booking .addon-section{padding-top:4px}
+#booking .addon-section-title{font-size:16px!important;margin-bottom:7px!important}
+#booking .addon-section-title>span{font-weight:500;color:var(--muted);font-size:12px}
+#booking .premium-addon-note{padding:10px 12px;margin:0 0 10px;border-radius:10px;background:rgba(8,124,255,.09);color:#c4e7ff;font-size:12px;line-height:1.5}
+#booking .addon-grid{gap:6px!important}
+#booking .check-card.addon-card{min-height:48px!important;padding:9px 10px!important;border-radius:12px!important;gap:8px!important;align-items:center!important}
+#booking .addon-card-main{display:block!important;align-self:center!important}
+#booking .addon-card-top{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:8px!important}
+#booking .addon-name{font-size:13px!important;line-height:1.35!important;font-weight:800!important}
+#booking .addon-price-line{min-height:0!important;padding:0!important;border:0!important;background:none!important;box-shadow:none!important;font-size:12px!important;white-space:nowrap!important;text-align:right!important}
+#booking .check-card.addon-card input{width:18px!important;height:18px!important;margin:0!important}
+#booking .addon-card:has(input:checked){border-color:rgba(32,184,255,.6)!important;background:rgba(8,124,255,.1)!important}
+.nav-link:focus-visible{outline:2px solid var(--blue2);outline-offset:-5px}
+.nav-link.active,.nav-link[aria-current="page"]{
+  color:#fff!important;
+  background:linear-gradient(180deg,rgba(8,124,255,.26),rgba(8,124,255,.07))!important;
+  box-shadow:inset 0 -3px 0 var(--blue2),inset 0 1px 0 rgba(255,255,255,.08)!important;
+}
+body:has(#home:target) .nav-link:not([data-page-target="home"]),
+body:has(#pricing-services:target) .nav-link:not([data-page-target="pricing-services"]),
+body:has(#booking:target) .nav-link:not([data-page-target="booking"]){
+  background:transparent!important;box-shadow:none!important;color:#d7e1ed!important;
+}
+body:has(#home:target) .nav-link[data-page-target="home"],
+body:has(#pricing-services:target) .nav-link[data-page-target="pricing-services"],
+body:has(#booking:target) .nav-link[data-page-target="booking"]{
+  color:#fff!important;
+  background:linear-gradient(180deg,rgba(8,124,255,.26),rgba(8,124,255,.07))!important;
+  box-shadow:inset 0 -3px 0 var(--blue2),inset 0 1px 0 rgba(255,255,255,.08)!important;
+}
+#booking .book-info .quote-next-step{margin-top:12px!important;font-size:13px!important;color:#b9c6d6!important}
+#home .customer-reviews + .trust-panel{transform:none!important;margin-top:24px!important}
+#home .customer-reviews ~ .owner-quote-section{margin-top:0!important}
+.quote-options,.vehicle-options{min-width:0;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.025)}
+.quote-options>summary,.vehicle-options>summary{padding:14px;cursor:pointer;color:#e3ebf5;font-weight:800;font-size:13px;line-height:1.5}
+.quote-options>summary span,.vehicle-options>summary span{font-weight:500;color:var(--muted)}
+.quote-options>summary:focus-visible,.vehicle-options>summary:focus-visible{outline:2px solid var(--blue2);outline-offset:3px;border-radius:12px}
+.quote-options>.form-grid,.vehicle-options>.form-grid{padding:0 14px 14px}
+.quote-options[open]>summary,.vehicle-options[open]>summary{margin-bottom:4px}
+@media(max-width:699px){
+  .customer-reviews{padding:18px 15px;border-radius:20px;margin-top:24px}
+  .reviews-heading{display:block}
+  .reviews-link{display:inline-block;margin-top:10px}
+  .review-grid{grid-template-columns:1fr}
+  .review-card{padding:16px}
+  .addon-price-grid{grid-template-columns:1fr;gap:10px}
+  .addon-price-card{padding:16px}
+  .google-proof{font-size:12px;margin-top:50px}
+  .nav-link{overflow-wrap:normal}
+}
+
+
+.draft-notice{padding:9px 14px;text-align:center;background:#071827;border-bottom:1px solid rgba(32,184,255,.25);color:#bcd2e5;font-size:11px;line-height:1.5;font-weight:600}
 </style>
-
-<link rel="icon" type="image/png" href="/favicon.png?v=2">
-<link rel="shortcut icon" type="image/png" href="/favicon.png?v=2">
-
-<script src="/google-ads-config.js" defer></script>
-<script src="/quote-tracking.js" defer></script>
 </head>
 <body>
+<aside class="draft-notice">Final draft preview · Quote requests are not sent from this preview.</aside>
 <header class="site-header">
   <div class="navbar">
     <a class="brand" href="#home" data-page-target="home" aria-label="Home">
@@ -2910,7 +2983,7 @@ body:has(.page:target) .page.active:not(:target){
     </a>
     <a class="nav-link active" href="#home" data-page-target="home">Home</a>
     <a class="nav-link" href="#pricing-services" data-page-target="pricing-services">Pricing/Services</a>
-    <a class="nav-link" href="#booking" data-page-target="booking">Booking</a>
+    <a class="nav-link" href="#booking" data-page-target="booking">Get a Quote</a>
   </div>
 </header>
 <main>
@@ -2918,13 +2991,48 @@ body:has(.page:target) .page.active:not(:target){
     <div class="hero">
       <div class="container hero-inner">
         <div class="hero-copy">
+          <p class="service-area">Mobile detailing in Carlsbad &amp; nearby areas</p>
           <h1>We Bring the Detail<br>to Your Driveway</h1>
           <p class="lead">Skip the shop and keep your day moving. We bring quality mobile detailing right to your driveway, giving your car a fresh clean without the extra hassle.</p>
           <div class="actions">
-            <a class="btn btn-primary" href="#booking" data-page-target="booking">Book Now!</a>
+            <a class="btn btn-primary" href="#booking" data-page-target="booking">Get a Quote</a>
             <a class="btn btn-secondary see-pricing-grey" href="#pricing-services" data-page-target="pricing-services">See Pricing</a>
           </div>
+          <a class="google-proof" href="https://www.google.com/maps/place/SD+Driveway+Detailing/@33.1187005,-117.254279,11z/data=!4m8!3m7!1s0x4ccba279bb8e135:0xda9332e3d877e113!8m2!3d33.1187005!4d-117.254279!9m1!1b1!16s%2Fg%2F11nqblbsr0?entry=ttu&amp;g_ep=EgoyMDI2MDkyOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" title="Google rating checked October 1, 2026">
+            <span class="review-stars" aria-hidden="true">★★★★★</span>
+            <span><strong>5.0 on Google</strong> · 11 reviews</span>
+          </a>
         </div>
+        <section class="customer-reviews" aria-labelledby="customer-reviews-title">
+          <div class="reviews-heading">
+            <div>
+              <h2 id="customer-reviews-title">What customers say</h2>
+              <p>5.0 out of 5 · 11 Google reviews</p>
+            </div>
+            <a class="reviews-link" href="https://www.google.com/maps/place/SD+Driveway+Detailing/@33.1187005,-117.254279,11z/data=!4m8!3m7!1s0x4ccba279bb8e135:0xda9332e3d877e113!8m2!3d33.1187005!4d-117.254279!9m1!1b1!16s%2Fg%2F11nqblbsr0?entry=ttu&amp;g_ep=EgoyMDI2MDkyOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">Read full reviews on Google ↗</a>
+          </div>
+          <div class="review-grid">
+            <figure class="review-card">
+              <span class="review-stars" aria-label="5 out of 5 stars">★★★★★</span>
+              <h3>A repeat customer</h3>
+              <p class="review-copy">Booked two details a month apart and praised the prompt, convenient service. Plans to book again.</p>
+              <figcaption><cite>Charle Dewitt</cite><span class="review-type">Google review · summarized</span></figcaption>
+            </figure>
+            <figure class="review-card">
+              <span class="review-stars" aria-label="5 out of 5 stars">★★★★★</span>
+              <h3>Easy from start to finish</h3>
+              <p class="review-copy">Praised the punctuality, clear communication, and clean interior and exterior. Appreciated having the detail done at home.</p>
+              <figcaption><cite>Cristina Tonello</cite><span class="review-type">Google review · summarized</span></figcaption>
+            </figure>
+            <figure class="review-card">
+              <span class="review-stars" aria-label="5 out of 5 stars">★★★★★</span>
+              <h3>A spotless finish</h3>
+              <blockquote class="review-copy">“Car was spotless afterwards, worth it.”</blockquote>
+              <figcaption><cite>Arman Nazari</cite><span class="review-type">Google review · excerpt</span></figcaption>
+            </figure>
+          </div>
+          <p class="review-verification">Rating checked October 1, 2026. Read the full customer reviews on Google using the link above.</p>
+        </section>
         <div class="trust-panel">
           <div class="trust-head">
             <h2>Why Choose Us?</h2>
@@ -3041,6 +3149,30 @@ body:has(.page:target) .page.active:not(:target){
           </div>
         </div>
 
+        <div class="block addon-pricing-block">
+          <h2 class="block-title">Optional add-ons</h2>
+          <p class="addon-pricing-copy">Choose the extras your vehicle needs when requesting your quote.</p>
+          <div class="addon-price-grid">
+            <article class="addon-price-card">
+              <h3>Paint Decontamination <span>from $30</span></h3>
+              <p>Removes bonded contaminants for smoother paint.</p>
+            </article>
+            <article class="addon-price-card">
+              <h3>Pet Hair Removal <span>from $30</span></h3>
+              <p>Photos needed for an accurate quote.</p>
+            </article>
+            <article class="addon-price-card">
+              <h3>Exterior Plastic Trim Refresh <span>$25</span></h3>
+              <p>Refreshes faded exterior plastic trim. Results vary.</p>
+            </article>
+            <article class="addon-price-card">
+              <h3>Carpet Pattern Lines <span>$10</span></h3>
+              <p>Patterned lines on carpets and floor mats.</p>
+            </article>
+          </div>
+          <p class="addon-pricing-copy">Paint decontamination and exterior plastic trim refresh are already included in the Premium Package.</p>
+          <a class="btn btn-secondary addon-quote-link" href="#booking" data-page-target="booking">Get a Quote with Add-ons</a>
+        </div>
         <div class="block">
           <h2 class="block-title">Discounts</h2>
           <div class="discount-grid">
@@ -3058,30 +3190,113 @@ body:has(.page:target) .page.active:not(:target){
     <div class="container section">
       <div class="book-layout">
         <aside class="book-info booking-process-card">
-          <h2>Easy booking.</h2>
-          <p><strong>Fill out the form and get a quote in minutes.</strong> After you enter your details, the form opens a text message to us with everything filled in. You can preview it before sending, then send it when it looks right.</p>
-          <div class="booking-secure-bar">Your information is kept secure and only used to prepare your quote and contact you about your detail.</div>
+          <h2>Get your detail quote.</h2>
+          <p><strong>Tell us about your vehicle and location.</strong> We’ll text you at the number you provide with your quote and availability.</p>
+          <p class="quote-next-step">Your full address is only needed when we arrange your booking. Sending a request doesn’t reserve an appointment.</p>
+          <div class="booking-secure-bar">Your details are only used to prepare your quote and contact you about your detail.</div>
         </aside>
         <div class="book-form">
-          <form id="bookingForm" class="form-grid">
+          <div id="bookingForm" class="form-grid">
+            <input type="hidden" name="_subject" value="New Quote Request - SD Driveway Detailing">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" id="formNext" name="_next" value="https://sddrivewaydetailing.com/quote-received">
+            <input type="hidden" id="quoteMessage" name="Quote details" value="">
+            <input type="hidden" id="quoteSource" name="Lead source" value="Website">
             <label>Name
-              <input id="name" name="name" type="text" placeholder="Your name" autocomplete="name">
+              <input id="name" name="Name" type="text" placeholder="Your name" autocomplete="name" required>
             </label>
-            <label>Address
-              <input id="address" name="address" type="text" placeholder="Ex: 123 Main St, Carlsbad">
+            <label>Phone
+              <input id="phone" name="Phone" type="tel" placeholder="Ex: 442-555-0123" autocomplete="tel" inputmode="tel" required>
             </label>
-            <label class="full">Preferred day/time
-              <input id="time" name="time" type="text" placeholder="Ex: Saturday morning">
+            <label class="full">City or ZIP code
+              <input id="city" name="City or ZIP code" type="text" placeholder="Ex: Carlsbad or 92009" autocomplete="address-level2" required>
             </label>
             <div class="full">
-              <div class="car-list" id="carList"></div>
+              <div class="car-list" id="carList">
+<div class="car-entry">
+<div class="car-entry-head">
+      <div class="car-entry-title">Vehicle</div>
+      <button class="remove-car" type="button">Remove</button>
+    </div>
+    <label>Vehicle year / make / model (optional)
+      <input class="car-type" name="Vehicle 1 — Vehicle" type="text" placeholder="Ex: 2018 Honda Accord">
+    </label>
+    <label>Vehicle size
+      <select class="car-size" name="Vehicle 1 — Size" required>
+        <option value="" disabled selected>Choose vehicle size</option>
+        <option value="Sedan">Sedan</option>
+        <option value="SUV">SUV</option>
+        <option value="Truck">Truck</option>
+      </select>
+    </label>
+    <label class="full">Service package
+      <select class="car-package" name="Vehicle 1 — Package">
+        <option value="Not sure — please recommend a package">Not sure — help me choose</option>
+        <option value="Exterior Detail">Exterior Detail</option>
+        <option value="Wash & Wax + Interior Refresh">Wash &amp; Wax + Interior Refresh</option>
+        <option value="Premium Package">Premium Package</option>
+      </select>
+    </label>
+    <details class="vehicle-options full">
+    <summary>Vehicle condition <span>(optional)</span></summary>
+    <div class="form-grid">
+    <label class="full">Condition
+      <select class="car-condition" name="Vehicle 1 — Condition">
+        <option value="Not specified — please confirm">Not specified — please confirm</option>
+        <option value="Maintenance clean / regular dirt">Maintenance clean / regular dirt</option>
+        <option value="Extra dirty / photos needed for quote">Extra dirty / photos needed for quote</option>
+      </select>
+    </label>
+    <p class="condition-helper-copy full">Heavy stains, trash, or buildup may need photos for an accurate quote.</p>
+    </div>
+    </details>
+    <div class="full addon-section">
+      <div class="addon-section-title">Add-ons <span>(optional)</span></div>
+      <p class="premium-addon-note" hidden>Premium already includes paint decontamination and exterior plastic trim refresh.</p>
+            <div class="addon-grid" aria-label="Add-ons">
+        <label class="check-card addon-card" data-premium-card="paint-decon">
+          <input class="car-addon" name="Vehicle 1 — Add-on 1" type="checkbox" value="Paint Decontamination — starting at $30" data-premium-included="true" data-standard-value="Paint Decontamination — starting at $30" data-included-value="Paint Decontamination — Free with Premium Package">
+          <span class="addon-card-main">
+            <span class="addon-card-top"><strong class="addon-name">Paint Decontamination</strong><span class="addon-price-line"><span class="addon-price-original">from $30</span><span class="addon-free">Free</span></span></span>
+          </span>
+        </label>
+        <label class="check-card addon-card">
+          <input class="car-addon" name="Vehicle 1 — Add-on 2" type="checkbox" value="Pet Hair Removal — starting at $30 (photos/custom quote required)">
+          <span class="addon-card-main">
+            <span class="addon-card-top"><strong class="addon-name">Pet Hair Removal</strong><span class="addon-price-line">from $30</span></span>
+          </span>
+        </label>
+        <label class="check-card addon-card" data-premium-card="trim-refresh">
+          <input class="car-addon" name="Vehicle 1 — Add-on 3" type="checkbox" value="Exterior Plastic Trim Refresh — $25" data-premium-included="true" data-standard-value="Exterior Plastic Trim Refresh — $25" data-included-value="Exterior Plastic Trim Refresh — Free with Premium Package">
+          <span class="addon-card-main">
+            <span class="addon-card-top"><strong class="addon-name">Exterior Trim Refresh</strong><span class="addon-price-line"><span class="addon-price-original">$25</span><span class="addon-free">Free</span></span></span>
+          </span>
+        </label>
+        <label class="check-card addon-card">
+          <input class="car-addon" name="Vehicle 1 — Add-on 4" type="checkbox" value="Carpet Pattern Lines — $10">
+          <span class="addon-card-main">
+            <span class="addon-card-top"><strong class="addon-name">Carpet Pattern Lines</strong><span class="addon-price-line">$10</span></span>
+          </span>
+        </label></div>
+    </div>
+</div>
+</div>
               <button class="btn btn-secondary add-car" type="button" id="addCar">+ Add another vehicle</button>
             </div>
-            <label class="full">Extra notes
-              <textarea id="notes" name="notes" placeholder="Water access, apartment/gate details, preferred contact method, photos available, or anything else we should know."></textarea>
-            </label>
-            <button class="btn btn-primary book-button full" type="submit">Send Quote Request</button>
-          </form>
+            <details class="quote-options full">
+              <summary>Preferred time &amp; extra notes <span>(optional)</span></summary>
+              <div class="form-grid">
+                <label class="full">Preferred day/time
+                  <input id="time" name="Preferred day/time" type="text" placeholder="Ex: Saturday morning">
+                </label>
+                <label class="full">Extra notes
+                  <textarea id="notes" name="Extra notes" placeholder="Water access, heavy stains, pet hair, or anything else we should know."></textarea>
+                </label>
+              </div>
+            </details>
+            <button class="btn btn-primary book-button full" type="button" id="draftQuotePreview">Preview Quote Request</button>
+          </div>
           <div class="copy-row">
             <button class="btn btn-dark" type="button" id="previewMessage">Preview Message</button>
           </div>
@@ -3122,7 +3337,7 @@ body:has(.page:target) .page.active:not(:target){
       <div class="footer-links">
         <a class="footer-link" href="#home" data-page-target="home">Home</a>
         <a class="footer-link" href="#pricing-services" data-page-target="pricing-services">Pricing / Services</a>
-        <a class="footer-link" href="#booking" data-page-target="booking">Booking</a>
+        <a class="footer-link" href="#booking" data-page-target="booking">Get a Quote</a>
       </div>
     </div>
   </div>
@@ -3131,17 +3346,33 @@ body:has(.page:target) .page.active:not(:target){
   </div>
 </footer>
 <script>
+
+// Preserve paid Google attribution across the single-page navigation.
+(() => {
+  const params = new URLSearchParams(window.location.search);
+  const medium = (params.get('utm_medium') || '').toLowerCase();
+  const source = (params.get('utm_source') || '').toLowerCase();
+  if(params.has('gclid') || params.has('gbraid') || params.has('wbraid') ||
+     (source.includes('google') && ['cpc','ppc','paid','paidsearch','paid_search'].includes(medium))){
+    try { sessionStorage.setItem('sd_quote_source','Google Ads'); } catch {}
+  }
+})();
+
 const pages = document.querySelectorAll('.page');
+const pageIds = new Set([...pages].map(page => page.id));
 
 function showPage(id, pushHash = false){
-  if(!id || !document.getElementById(id)) return;
+  if(!pageIds.has(id)) return;
 
   pages.forEach(page => {
     page.classList.toggle('active', page.id === id);
   });
 
   document.querySelectorAll('.nav-link').forEach(el => {
-    el.classList.toggle('active', el.dataset.pageTarget === id);
+    const selected = el.dataset.pageTarget === id;
+    el.classList.toggle('active', selected);
+    if(selected) el.setAttribute('aria-current', 'page');
+    else el.removeAttribute('aria-current');
   });
 
   if(pushHash && location.hash !== '#' + id){
@@ -3153,105 +3384,57 @@ function showPage(id, pushHash = false){
 
 function showPageFromHash(){
   const id = (location.hash || '#home').replace('#','');
-  showPage(document.getElementById(id) ? id : 'home', false);
+  showPage(pageIds.has(id) ? id : 'home', false);
 }
 
 window.addEventListener('hashchange', showPageFromHash);
-
-window.addEventListener('DOMContentLoaded', function(){
-  showPageFromHash();
-  if(typeof addCar === 'function') addCar();
+document.addEventListener('click', event => {
+  if(event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+  const link = event.target.closest('a[data-page-target]');
+  if(link && pageIds.has(link.dataset.pageTarget)) showPage(link.dataset.pageTarget);
 });
+
+
+
 
 function val(id){return (document.getElementById(id)?.value || '').trim();}
 const carList = document.getElementById('carList');
+const vehicleTemplate = carList.querySelector('.car-entry').cloneNode(true);
 function refreshCarLabels(){
   const entries = [...document.querySelectorAll('.car-entry')];
   entries.forEach((entry,index)=>{
     entry.querySelector('.car-entry-title').textContent = `Vehicle ${index + 1}`;
     entry.classList.toggle('can-remove', entries.length > 1);
+    const fields = {'car-type':'Vehicle','car-size':'Size','car-package':'Package','car-condition':'Condition'};
+    Object.entries(fields).forEach(([className,label]) => {
+      entry.querySelector('.' + className).name = `Vehicle ${index + 1} — ${label}`;
+    });
+    entry.querySelectorAll('.car-addon').forEach((addon,addonIndex) => {
+      addon.name = `Vehicle ${index + 1} — Add-on ${addonIndex + 1}`;
+    });
   });
 }
-function addCar(){
-  const entry = document.createElement('div');
-  entry.className = 'car-entry';
-  entry.innerHTML = `
-    <div class="car-entry-head">
-      <div class="car-entry-title">Vehicle</div>
-      <button class="remove-car" type="button">Remove</button>
-    </div>
-    <label>Vehicle year / make / model
-      <input class="car-type" type="text" placeholder="Ex: 2018 Honda Accord">
-    </label>
-    <label>Vehicle size
-      <select class="car-size">
-        <option value="Sedan">Sedan</option>
-        <option value="SUV">SUV</option>
-        <option value="Truck">Truck</option>
-      </select>
-    </label>
-    <label class="full">Service package
-      <select class="car-package">
-        <option value="Exterior Detail">Exterior Detail</option>
-        <option value="Wash & Wax + Interior Refresh">Wash &amp; Wax + Interior Refresh</option>
-        <option value="Premium Package">Premium Package</option>
-      </select>
-    </label>
-    <label class="full">Condition
-      <select class="car-condition">
-        <option value="Maintenance clean / regular dirt">Maintenance clean / regular dirt</option>
-        <option value="Extra dirty / photos needed for quote">Extra dirty / photos needed for quote</option>
-      </select>
-    </label>
-    <p class="condition-helper-copy full">Choose maintenance clean for normal dirt, dust, crumbs, and regular upkeep. Choose extra dirty only when there is heavy buildup, trash, stains, or anything that needs photos for an accurate quote.</p>
-    <div class="full addon-section">
-      <div class="addon-section-title">Add-ons</div>
-      <p class="addon-helper-copy">Optional upgrades can be added to any detail.</p>
-            <div class="addon-grid" aria-label="Add-ons">
-        <label class="check-card addon-card" data-premium-card="paint-decon">
-          <input class="car-addon" type="checkbox" value="Paint Decontamination — starting at $30" data-premium-included="true" data-standard-value="Paint Decontamination — starting at $30" data-included-value="Paint Decontamination — Free with Premium Package">
-          <span class="addon-card-main">
-            <span class="addon-card-top"><strong class="addon-name">Paint Decontamination</strong><span class="addon-price-line"><span class="addon-price-original">starting at $30</span><span class="addon-free">Free</span></span></span>
-            <span class="addon-desc">Uses a synthetic clay towel to remove rough bonded contaminants that regular washing can miss, leaving paint smoother and better prepared for sealant.</span>
-          </span>
-        </label>
-        <label class="check-card addon-card">
-          <input class="car-addon" type="checkbox" value="Pet Hair Removal — starting at $30 (photos/custom quote required)">
-          <span class="addon-card-main">
-            <span class="addon-card-top"><strong class="addon-name">Pet Hair Removal</strong><span class="addon-price-line">starting at $30</span></span>
-            <span class="addon-desc">For noticeable pet hair on seats, carpets, or floor mats. Requires photos for an accurate custom quote.</span>
-          </span>
-        </label>
-        <label class="check-card addon-card" data-premium-card="trim-refresh">
-          <input class="car-addon" type="checkbox" value="Exterior Plastic Trim Refresh — $25" data-premium-included="true" data-standard-value="Exterior Plastic Trim Refresh — $25" data-included-value="Exterior Plastic Trim Refresh — Free with Premium Package">
-          <span class="addon-card-main">
-            <span class="addon-card-top"><strong class="addon-name">Exterior Plastic Trim Refresh</strong><span class="addon-price-line"><span class="addon-price-original">$25</span><span class="addon-free">Free</span></span></span>
-            <span class="addon-desc">Helps faded exterior plastic trim look darker and cleaner. Results may vary.</span>
-          </span>
-        </label>
-        <label class="check-card addon-card">
-          <input class="car-addon" type="checkbox" value="Carpet Pattern Lines — $10">
-          <span class="addon-card-main">
-            <span class="addon-card-top"><strong class="addon-name">Carpet Pattern Lines</strong><span class="addon-price-line">$10</span></span>
-            <span class="addon-desc">Adds clean patterned lines to carpets and floor mats for a finished look.</span>
-          </span>
-        </label></div>
-    </div>`;
+function initializeCarEntry(entry){
+  if(entry.dataset.carBound) return;
+  entry.dataset.carBound = 'true';
   entry.querySelector('.remove-car').addEventListener('click', () => {
     entry.remove();
     refreshCarLabels();
   });
-  const packageSelect = entry.querySelector('.car-package');
-  if(packageSelect){
-    packageSelect.addEventListener('change', () => syncPremiumIncludedAddons(entry));
-  }
-  carList.appendChild(entry);
-  refreshCarLabels();
+  entry.querySelector('.car-package').addEventListener('change', () => syncPremiumIncludedAddons(entry));
   syncPremiumIncludedAddons(entry);
+}
+function addCar(){
+  const entry = vehicleTemplate.cloneNode(true);
+  carList.appendChild(entry);
+  initializeCarEntry(entry);
+  refreshCarLabels();
 }
 function syncPremiumIncludedAddons(entry){
   const isPremium = entry.querySelector('.car-package')?.value === 'Premium Package';
   entry.classList.toggle('premium-package-selected', isPremium);
+  const includedNote = entry.querySelector('.premium-addon-note');
+  if(includedNote) includedNote.hidden = !isPremium;
 
   entry.querySelectorAll('.car-addon[data-premium-included="true"]').forEach(addon => {
     const card = addon.closest('.check-card');
@@ -3286,8 +3469,9 @@ function bookingMessage(){
   return `Hi SD Driveway Detailing, I'd like to request a quote.
 
 Name: ${val('name')}
-Address: ${val('address')}
-Preferred day/time: ${val('time')}
+Phone: ${val('phone')}
+City or ZIP code: ${val('city')}
+Preferred day/time: ${val('time') || 'Flexible / not specified'}
 Number of vehicles: ${document.querySelectorAll('.car-entry').length}
 
 ${vehicleDetails()}
@@ -3299,15 +3483,28 @@ function updatePreview(){
   preview.style.display = 'block';
   preview.textContent = bookingMessage();
 }
-document.getElementById('bookingForm').addEventListener('submit', e => {
-  e.preventDefault();
-  updatePreview();
-  const message = bookingMessage();
-  if (typeof window.sddOpenQuoteText === 'function') {
-    window.sddOpenQuoteText(message);
-  } else {
-    window.location.href = `sms:4423036022?&body=${encodeURIComponent(message)}`;
+function leadSource(){
+  const params = new URLSearchParams(window.location.search);
+  const medium = (params.get('utm_medium') || '').toLowerCase();
+  const source = (params.get('utm_source') || '').toLowerCase();
+  const paidGoogle = params.has('gclid') || params.has('gbraid') || params.has('wbraid') ||
+    (source.includes('google') && ['cpc','ppc','paid','paidsearch','paid_search'].includes(medium));
+  if(paidGoogle){
+    try { sessionStorage.setItem('sd_quote_source','Google Ads'); } catch {}
+    return 'Google Ads';
   }
+  let remembered = '';
+  try { remembered = sessionStorage.getItem('sd_quote_source') || ''; } catch {}
+  return remembered || params.get('utm_source') || 'Website';
+}
+const bookingForm = document.getElementById('bookingForm');
+bookingForm.addEventListener('submit', e => {
+  if(!bookingForm.checkValidity()) return;
+  document.getElementById('quoteMessage').value = bookingMessage();
+  document.getElementById('quoteSource').value = leadSource();
+  const returnOrigin = /^https?:$/.test(window.location.protocol) ? window.location.origin : 'https://sddrivewaydetailing.com';
+  document.getElementById('formNext').value = `${returnOrigin}/quote-received`;
+  if (window.sddPrepareQuoteConversion) window.sddPrepareQuoteConversion();
 });
 document.getElementById('previewMessage').addEventListener('click', updatePreview);
 const copyMessageBtn = document.getElementById('copyMessage');
@@ -3323,6 +3520,20 @@ if(copyMessageBtn){
     }
   });
 }
+
+function initializeSite(){
+  showPageFromHash();
+  carList.querySelectorAll('.car-entry').forEach(initializeCarEntry);
+  refreshCarLabels();
+}
+if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initializeSite, {once:true});
+else initializeSite();
+
+document.getElementById('draftQuotePreview').addEventListener('click', () => {
+  const invalid = [...bookingForm.querySelectorAll('input,select,textarea')].find(field => !field.disabled && !field.checkValidity());
+  if(invalid){ invalid.reportValidity(); return; }
+  updatePreview();
+});
 </script>
 </body>
 </html>
