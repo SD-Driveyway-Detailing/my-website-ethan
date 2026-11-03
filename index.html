@@ -2987,6 +2987,7 @@ body:has(#booking:target) .nav-link[data-page-target="booking"]{
   .package-card:not(.package-card-featured):not(.package-card-premium)>.package-feature-list{grid-row:3 / 5;align-self:start}
 }
 </style>
+  <script defer src="/assets/ads-tracking.js"></script>
 </head>
 <body>
 <header class="site-header">
@@ -3567,6 +3568,9 @@ bookingForm.addEventListener('submit', async e => {
     button.textContent = 'Request submitted';
     status.textContent = 'Thank you! Your quote request has been submitted. We’ll text you with your quote and availability.';
     bookingForm.dataset.submitted = 'true';
+    if (typeof window.sddTrackQuoteSubmission === 'function') {
+      window.sddTrackQuoteSubmission();
+    }
   } catch(error) {
     status.textContent = error.name === 'AbortError'
       ? 'We couldn’t confirm submission. Please text 442-303-6022 before trying again.'
