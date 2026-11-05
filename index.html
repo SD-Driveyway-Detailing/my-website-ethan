@@ -3213,10 +3213,11 @@ body:has(#booking:target) .nav-link[data-page-target="booking"]{
           <div class="booking-secure-bar">Your details are only used to prepare your quote and contact you about your detail.</div>
         </aside>
         <div class="book-form">
-          <form id="bookingForm" class="form-grid" action="https://formsubmit.co/ethanmunoz786@gmail.com" method="POST">
+          <form id="bookingForm" class="form-grid" action="/api/quote" method="POST">
             <input type="hidden" name="_subject" value="New Quote Request - SD Driveway Detailing">
             <input type="hidden" name="_template" value="table">
             <input type="hidden" name="_captcha" value="false">
+            <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" hidden>
             <input type="hidden" id="formNext" name="_next" value="https://sddrivewaydetailing.com/quote-received">
             <input type="hidden" id="quoteMessage" name="Quote details" value="">
             <input type="hidden" id="quoteSource" name="Lead source" value="Website">
@@ -3314,6 +3315,12 @@ body:has(#booking:target) .nav-link[data-page-target="booking"]{
             </details>
             <button class="btn btn-primary book-button full" type="submit" id="sendQuoteRequest">Send Quote Request</button>
             <p class="full" id="quoteHandoffStatus" role="status" aria-live="polite"></p>
+            <div class="full" id="quoteFallback" hidden>
+              <p>Your details are ready to text. Review the message and tap Send in your messaging app.</p>
+              <a class="btn btn-primary" id="textQuoteFallback" href="sms:4423036022">Text your quote request</a>
+              <button class="btn btn-secondary" id="copyMessage" type="button">Copy quote details</button>
+              <p>You can also text us directly at <a href="sms:4423036022">442-303-6022</a>.</p>
+            </div>
           </form>
           <div class="copy-row">
             <button class="btn btn-dark" type="button" id="previewMessage">Preview Message</button>
@@ -3536,6 +3543,14 @@ function leadSource(){
   return remembered || params.get('utm_source') || 'Website';
 }
 const bookingForm = document.getElementById('bookingForm');
+function updateQuoteFallback(){
+  const isAppleMobile = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  document.getElementById('textQuoteFallback').href = 'sms:4423036022' +
+    (isAppleMobile ? '&' : '?') + 'body=' + encodeURIComponent(bookingMessage());
+}
+bookingForm.addEventListener('input', updateQuoteFallback);
+bookingForm.addEventListener('change', updateQuoteFallback);
 bookingForm.addEventListener('submit', async e => {
   e.preventDefault();
   const button = document.getElementById('sendQuoteRequest');
@@ -3548,10 +3563,11 @@ bookingForm.addEventListener('submit', async e => {
   button.disabled = true;
   button.textContent = 'Sending…';
   status.textContent = '';
+  document.getElementById('quoteFallback').hidden = true;
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 20000);
+  const timeout = setTimeout(() => controller.abort(), 40000);
   try {
-    const response = await fetch('https://formsubmit.co/ajax/ethanmunoz786@gmail.com', {
+    const response = await fetch('/api/quote', {
       method: 'POST',
       headers: {'Content-Type':'application/json', 'Accept':'application/json'},
       body: JSON.stringify(payload),
@@ -3572,9 +3588,9 @@ bookingForm.addEventListener('submit', async e => {
       window.sddTrackQuoteSubmission();
     }
   } catch(error) {
-    status.textContent = error.name === 'AbortError'
-      ? 'We couldn’t confirm submission. Please text 442-303-6022 before trying again.'
-      : 'Unable to submit: ' + (error.message || 'Unknown error') + ' Please text 442-303-6022 if this continues.';
+    status.textContent = 'We couldn’t confirm delivery. Please send your request by text below.';
+    updateQuoteFallback();
+    document.getElementById('quoteFallback').hidden = false;
     button.disabled = false;
     button.textContent = 'Send Quote Request';
   } finally {
@@ -3589,7 +3605,7 @@ if(copyMessageBtn){
     try{
       await navigator.clipboard.writeText(bookingMessage());
       copyMessageBtn.textContent = 'Copied';
-      setTimeout(()=>copyMessageBtn.textContent='Copy Message',1500);
+      setTimeout(()=>copyMessageBtn.textContent='Copy quote details',1500);
     }catch(err){
       alert('Message is shown below. Copy it manually if needed.');
     }
