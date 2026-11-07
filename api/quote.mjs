@@ -1,5 +1,8 @@
-const ENDPOINT = 'https://formsubmit.co/ajax/ethanmunoz786@gmail.com';
-const SITE_URL = 'https://sddrivewaydetailing.com/#booking';
+import { createHash } from 'node:crypto';
+
+const ENDPOINT = 'https://api.resend.com/emails';
+const RECIPIENT = 'ethanmunoz786@gmail.com';
+const SENDER_DOMAIN = 'sddrivewaydetailing.com';
 const MAX_BYTES = 24576;
 const DELIVERY_ERROR = 'We couldn’t confirm delivery. Please send your request by text below.';
 const ALLOWED_FIELDS = new Set(['Name', 'Phone', 'City or ZIP code', 'Preferred day/time', 'Quote details', 'Lead source']);
@@ -58,20 +61,33 @@ export async function POST(request) {
     return json({success: false, message: 'Please check your name, phone, location, and vehicle size.'}, 400);
   }
 
-  // Service controls and the destination are fixed here, never supplied by visitors.
-  const body = new URLSearchParams({
-    ...fields,
-    _subject: 'New Quote Request - SD Driveway Detailing',
-    _template: 'table',
-    _captcha: 'false',
-    _url: SITE_URL
+  const apiKey = process.env.RESEND_API_KEY;
+  if(!apiKey || (process.env.RESEND_EMAIL_DOMAIN || '').trim() !== SENDER_DOMAIN) {
+    console.error('quote_delivery_failed', {reason: 'configuration_missing'});
+    return json({success: false, message: DELIVERY_ERROR}, 503);
+  }
+
+  // Fixed sender and recipient prevent visitors from turning this into a mail relay.
+  const text = Object.keys(fields).sort().map(key => `${key}: ${fields[key]}`).join('\n\n');
+  const body = JSON.stringify({
+    from: `SD Driveway Detailing <quotes@${SENDER_DOMAIN}>`,
+    to: [RECIPIENT],
+    subject: 'New Quote Request - SD Driveway Detailing',
+    text
   });
+  // An identical retry reuses the provider's receipt rather than sending twice.
+  const idempotencyKey = 'sdd-quote-' + createHash('sha256').update(body).digest('hex');
   try {
     const upstream = await fetch(ENDPOINT, {
       method: 'POST',
-      headers: {'Content-Type': 'application/x-www-form-urlencoded', Accept: 'application/json'},
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        'Idempotency-Key': idempotencyKey
+      },
       body,
-      signal: AbortSignal.timeout(30000),
+      signal: AbortSignal.timeout(15000),
       redirect: 'error'
     });
     let result;
@@ -80,9 +96,9 @@ export async function POST(request) {
       console.error('quote_delivery_failed', {reason: 'invalid_response', status: upstream.status});
       return json({success: false, message: DELIVERY_ERROR}, 502);
     }
-    if(!upstream.ok || ![true, 'true'].includes(result?.success) ||
-       /activat|confirm.*email|verify.*email/i.test(result.message || '')) {
-      console.error('quote_delivery_failed', {reason: 'service_rejected', status: upstream.status});
+    if(!upstream.ok || typeof result?.id !== 'string' || !result.id.trim()) {
+      const code = /^[a-z_]{1,60}$/.test(result?.name || '') ? result.name : 'unknown';
+      console.error('quote_delivery_failed', {reason: 'service_rejected', status: upstream.status, code});
       return json({success: false, message: DELIVERY_ERROR}, 502);
     }
     return json({success: true});
