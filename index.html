@@ -3315,9 +3315,9 @@ body:has(#booking:target) .nav-link[data-page-target="booking"]{
             </details>
             <button class="btn btn-primary book-button full" type="submit" id="sendQuoteRequest">Send Quote Request</button>
             <p class="full" id="quoteHandoffStatus" role="status" aria-live="polite"></p>
-            <div class="full" id="quoteFallback" hidden>
-              <p>Your details are ready to text. Review the message and tap Send in your messaging app.</p>
-              <a class="btn btn-primary" id="textQuoteFallback" href="sms:4423036022">Text your quote request</a>
+            <div class="full" id="quoteFallback">
+              <p>Prefer to text? Fill in your details above, then review and send your request in your messaging app.</p>
+              <a class="btn btn-secondary" id="textQuoteFallback" href="sms:4423036022">Text your quote request</a>
               <button class="btn btn-secondary" id="copyMessage" type="button">Copy quote details</button>
               <p>You can also text us directly at <a href="sms:4423036022">442-303-6022</a>.</p>
             </div>
@@ -3551,6 +3551,13 @@ function updateQuoteFallback(){
 }
 bookingForm.addEventListener('input', updateQuoteFallback);
 bookingForm.addEventListener('change', updateQuoteFallback);
+document.getElementById('textQuoteFallback').addEventListener('click', event => {
+  if(!bookingForm.reportValidity()) {
+    event.preventDefault();
+    return;
+  }
+  updateQuoteFallback();
+});
 bookingForm.addEventListener('submit', async e => {
   e.preventDefault();
   const button = document.getElementById('sendQuoteRequest');
